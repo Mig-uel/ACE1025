@@ -13,8 +13,6 @@
       margin: 0;
     }
 
-
-
     .movies {
       margin: 50px 20px;
     }
@@ -27,6 +25,26 @@
     img {
       height: 100%;
       width: auto;
+    }
+
+    dt {
+      font-weight: bold;
+      font-style: italic;
+
+    }
+
+    dd {
+      margin-left: 50px;
+      padding: 20px;
+    }
+
+    table {
+      margin: 40px auto;
+
+    }
+
+    tr {
+      height: 50px;
     }
   </style>
 </head>
@@ -56,11 +74,125 @@
         <img src="https://upload.wikimedia.org/wikipedia/en/1/18/Titanic_%281997_film%29_poster.png"
           alt="Titanic Movie Poster">
       </a>
-      <figcaption>Click on an image poster to learn more.</>
+      <figcaption>Click on a movie poster to learn more.</>
     </figure>
   </section>
 
   <hr />
+
+  <nav>
+    <ul style="list-style-type: none; text-align: center; margin-top: 20px;">
+      <li style="display: inline-block; margin-right: 20px;"><a href="#top10">Top 10 Movies</a></li>
+      <li style="display: inline-block; margin-right: 20px;"><a href="">Top 250 TV Shows</a></li>
+      <li style="display: inline-block; margin-right: 20px;"><a href="" target="_blank">Box Office</a></li>
+    </ul>
+  </nav>
+
+  <section>
+    <dl>
+      <dt>Avatar (2009)</dt>
+      <dd>Synopsis: A paraplegic Marine dispatched to the moon Pandora on a unique mission becomes torn between
+        following his orders and protecting the world he feels is his home.</dd>
+
+      <dt>Avengers: Endgame (2019)</dt>
+      <dd>Synopsis: After the devastating events of Avengers: Infinity War (2018), the universe is in ruins. With the
+        help of remaining allies, the Avengers assemble once more in order to reverse Thanos' actions and restore
+        balance to the universe.</dd>
+
+      <dt>Avatar: The Way of Water (2022)</dt>
+      <dd>Synopsis: Jake Sully and Ney'tiri have formed a family and are doing everything to stay together. However,
+        they must leave their home and explore the regions of Pandora. When an ancient threat resurfaces, Jake must
+        fight a difficult war against the humans.</dd>
+
+      <dt>Titanic (1997)</dt>
+      <dd>Synopsis: A seventeen-year-old aristocrat falls in love with a kind but poor artist aboard the
+        luxurious, ill-fated R.M.S. Titanic.</dd>
+    </dl>
+  </section>
+
+  <hr />
+
+  <section id="top10">
+    <table style="border-collapse: collapse; width: 80%; text-align: center;">
+      <thead>
+        <tr style="background-color: #b9b9b9;">
+          <th colspan="4" style="text-align: center;">Top 10 Movies</th>
+        </tr>
+        <tr style="background-color: #dedede;">
+          <th>Rank</th>
+          <th>Title</th>
+          <th>Year</th>
+          <th>Gross Revenue (in billions)</th>
+        </tr>
+      </thead>
+
+      <tbody style="background-color: #f9f9f9;">
+        <tr>
+          <td>1</td>
+          <td><a href="https://www.imdb.com/title/tt0499549" target="_blank">Avatar</a></td>
+          <td>2009</td>
+          <td>$2.923</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td><a href="https://www.imdb.com/title/tt4154796" target="_blank">Avengers: Endgame</a></td>
+          <td>2019</td>
+          <td>$2.798</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td><a href="https://www.imdb.com/title/tt1630029" target="_blank">Avatar: The Way of Water</a></td>
+          <td>2022</td>
+          <td>$2.320</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td><a href="https://www.imdb.com/title/tt0120338" target="_blank">Titanic</a></td>
+          <td>1997</td>
+          <td>$2.195</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td><a href="https://www.imdb.com/title/tt4154756" target="_blank">Star Wars: The Force Awakens</a></td>
+          <td>2015</td>
+          <td>$2.068</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td><a href="https://www.imdb.com/title/tt1825683" target="_blank">Avengers: Infinity War</a></td>
+          <td>2018</td>
+          <td>$2.048</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td><a href="https://www.imdb.com/title/tt0120915" target="_blank">Jurassic World</a></td>
+          <td>2015</td>
+          <td>$1.671</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td><a href="https://www.imdb.com/title/tt0848228" target="_blank">The Lion King</a></td>
+          <td>2019</td>
+          <td>$1.662</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td><a href="https://www.imdb.com/title/tt4154756" target="_blank">The Avengers</a></td>
+          <td>2012</td>
+          <td>$1.519</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td><a href="https://www.imdb.com/title/tt0120338" target="_blank">Furious 7</a></td>
+          <td>2015</td>
+          <td>$1.515</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <hr />
+
 </body>
 
 </html>
