@@ -4,88 +4,63 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HTML Structure</title>
+  <title>Lab 3: HTML Structure</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+
+
+
+    .movies {
+      margin: 50px 20px;
+    }
+
+    figure {
+      height: 400px;
+      width: 100%;
+    }
+
+    img {
+      height: 100%;
+      width: auto;
+    }
+  </style>
 </head>
 
 <body>
-  <h1>Lists</h1>
+  <h1 style="text-align: center; margin-top: 30px;">Top Grossing Movies of All Time</h1>
 
-  <h2>Ordered Lists</h2>
-  <ol>
-    <li>Never give up!</li>
-    <li>Always complete class and lab assignments.</li>
-  </ol>
+  <section class="movies">
+    <figure>
+      <a href="https://www.imdb.com/title/tt0499549" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/en/d/d6/Avatar_%282009_film%29_poster.jpg"
+          alt="Avatar Movie Poster">
+      </a>
 
-  <ol type="a">
-    <li>Never give up!</li>
-    <li>Always complete class and lab assignments.</li>
-  </ol>
+      <a href="https://www.imdb.com/title/tt4154796" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/en/0/0d/Avengers_Endgame_poster.jpg"
+          alt="Avengers: End Game Movie Poster">
+      </a>
 
-  <h2>Unordered List</h2>
-  <ul>
-    <li>Apple</li>
-    <li>Oranges</li>
-    <li>Grapes</li>
-  </ul>
+      <a href="https://www.imdb.com/title/tt1630029" target="_blank">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/en/thumb/5/54/Avatar_The_Way_of_Water_poster.jpg/250px-Avatar_The_Way_of_Water_poster.jpg"
+          alt="The Way of Water (2022)">
+      </a>
 
-  <h2>Definition or Description List</h2>
-  <dl>
-    <dt>HTML</dt>
-    <dd>Hyper Text Markup Language</dd>
-    <dt>CSS</dt>
-    <dd>Cascading Style Sheets</dd>
-    <dt>JavaScript</dt>
-    <dd>A programming language for web development</dd>
-  </dl>
+      <a href="https://www.imdb.com/title/tt0120338" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/en/1/18/Titanic_%281997_film%29_poster.png"
+          alt="Titanic Movie Poster">
+      </a>
+      <figcaption>Click on an image poster to learn more.</>
+    </figure>
+  </section>
 
-  <h2>Tables</h2>
-  <table border="1">
-    <thead>
-      <tr>
-        <th>Column 1</th>
-        <th>Column 2</th>
-        <th>Column 3</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <tr>
-        <td>10</td>
-        <td>20</td>
-        <td>30</td>
-      </tr>
-
-      <tr>
-        <td>60</td>
-        <td>90</td>
-        <td>120</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <table border="1">
-    <thead>
-      <tr>
-        <th></th>
-        <th>Saturday</th>
-        <th>Sunday</th>
-      </tr>
-    </thead>
-    <br>
-    <tbody>
-      <tr>
-        <th>Tickets Sold</th>
-        <td align="right">120</td>
-        <td align="right">135</td>
-      </tr>
-
-      <tr>
-        <th>Total Sales</th>
-        <td align="right">$600</td>
-        <td align="right">$675</td>
-      </tr>
-    </tbody>
-  </table>
+  <hr />
 </body>
 
 </html>
