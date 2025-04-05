@@ -46,6 +46,23 @@
     tr {
       height: 50px;
     }
+
+    #top3 ul li {
+      margin: 10px 0;
+    }
+
+    #streaming-sites li {
+      padding: 10px 0;
+    }
+
+    nav ul li {
+      padding-right: 20px;
+      border-right: 1px solid #ccc;
+    }
+
+    nav ul li:last-child {
+      border-right: none;
+    }
   </style>
 </head>
 
@@ -83,8 +100,8 @@
   <nav>
     <ul style="list-style-type: none; text-align: center; margin-top: 20px;">
       <li style="display: inline-block; margin-right: 20px;"><a href="#top10">Top 10 Movies</a></li>
-      <li style="display: inline-block; margin-right: 20px;"><a href="">Top 250 TV Shows</a></li>
-      <li style="display: inline-block; margin-right: 20px;"><a href="" target="_blank">Box Office</a></li>
+      <li style="display: inline-block; margin-right: 20px;"><a href="#top3">Top 3 Most Watched Movies</a></li>
+      <li style="display: inline-block; margin-right: 20px;"><a href="#sites">Where to Watch?</a></li>
     </ul>
   </nav>
 
@@ -193,6 +210,67 @@
 
   <hr />
 
+  <section style="margin: 40px 0px;" id="top3">
+    <p><b>Top 3 Most Watched Movies</b></p>
+
+    <ul style=" margin-left: 50px;">
+      <li>
+        Avatar (2009) - 3.3 billion views
+      </li>
+
+      <li>
+        Avengers: Endgame (2019) - 2.8 billion views
+      </li>
+
+      <li>
+        Avatar: The Way of Water (2022) - 2.3 billion views
+      </li>
+    </ul>
+  </section>
+
+  <hr />
+
+  <section style="margin: 40px 0px;" id="sites">
+    <p><b>Where to Watch?</b></p>
+
+    <ul style=" margin-left: 10px; list-style: none;" id="streaming-sites">
+      <li>
+        <a href="https://www.netflix.com" target="_blank">Netflix</a>
+      </li>
+
+      <li>
+        <a href="https://www.hulu.com" target="_blank">Hulu</a>
+      </li>
+
+      <li>
+        <a href="https://www.disneyplus.com" target="_blank">Disney+</a>
+      </li>
+
+      <li>
+        <a href="https://www.amazon.com/Prime-Video/b?ie=UTF8&node=2676882011" target="_blank">Amazon Prime Video</a>
+      </li>
+      <li>
+        <a href="https://www.hbo.com" target="_blank">HBO</a>
+      </li>
+      <li>
+        <a href="https://www.apple.com/apple-tv-plus/" target="_blank">Apple TV+</a>
+      </li>
+      <li>
+        <a href="https://www.paramountplus.com" target="_blank">Paramount+</a>
+      </li>
+    </ul>
+  </section>
+
+  <hr />
+
+  <footer style="text-align: center; margin: 20px 0px;">
+    Movie Info &copy; Created by: Miguel Castillo <span id="year"></span>
+  </footer>
+
+  <script>
+    const year = new Date().getFullYear();
+    document.getElementById("year").innerText = year;
+  </script>
 </body>
 
 </html>
