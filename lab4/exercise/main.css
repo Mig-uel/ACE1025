@@ -1,0 +1,146 @@
+* {
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+  font-family: Arial, sans-serif; /* Set default font family */
+}
+
+header {
+  background-color: #f8f9fa; /* Light gray background */
+  padding: 20px; /* Padding around the header */
+  text-align: center; /* Centered text */
+  border-bottom: 2px solid #dee2e6; /* Add a bottom border to the header */
+}
+
+figure {
+  display: flex; /* Use flex-box for layout */
+  justify-content: center; /* Center the figure horizontally */
+  align-items: center; /* Center the content vertically */
+  margin: 20px; /* Margin around the figure */
+  gap: 20px; /* Space between image and caption */
+}
+
+img {
+  height: 500px; /* Set image height */
+  width: auto; /* Maintain aspect ratio */
+  object-fit: cover; /* Cover the area while maintaining aspect ratio */
+}
+
+#first {
+  position: relative; /* Position relative for absolute positioning of caption */
+}
+#first img {
+  filter: invert(100%); /* Invert colors of the first image */
+  position: relative; /* Position relative for absolute positioning of caption */
+  z-index: -1; /* Send the first image to the back */
+}
+
+#first div {
+  position: absolute; /* Position caption absolutely within the figure */
+  color: white; /* Set caption text color to white for better visibility */
+  text-align: center; /* Center the caption text */
+  bottom: 10px; /* Position the caption at the bottom of the image */
+  padding: 20px; /* Padding around the caption */
+  border: 2px solid #000; /* Add a border around the caption */
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* Semi-transparent black background for the caption */
+}
+
+#second {
+  position: relative; /* Position relative for absolute positioning of caption */
+}
+
+#second img {
+  filter: blur(5px); /* Apply a blur effect to the second image */
+  z-index: -1; /* Send the second image to the back */
+}
+
+#second div {
+  position: absolute; /* Position caption absolutely within the figure */
+  top: 40%; /* Position the caption at the top of the image */
+  text-align: center; /* Center the caption text */
+  padding: 20px; /* Padding around the caption */
+  color: white; /* Set caption text color to white for better visibility */
+  background-color: rgba(138, 0, 0, 0.5);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a shadow effect to the caption */
+}
+
+#second div a {
+  color: rgba(
+    255,
+    114,
+    175,
+    0.8
+  ); /* Set link color to white with some transparency */
+  text-decoration: none; /* Remove underline from links */
+  font-weight: bold; /* Make the link text bold */
+  width: 100%; /* Full width for the link */
+  display: block; /* Make the link a block element */
+  padding-top: 30px; /* Padding around the link */
+}
+
+#third {
+  position: relative; /* Position relative for absolute positioning of caption */
+}
+
+#third img {
+  z-index: -1; /* Send the third image to the back */
+}
+
+#linear-filter {
+  position: absolute; /* Position the linear filter absolutely within the figure */
+  top: 0; /* Position at the top of the image */
+  left: 0; /* Position at the left of the image */
+  right: 0; /* Position at the right of the image */
+  height: 100%; /* Full height for the linear filter */
+  background: linear-gradient(
+    to bottom,
+    rgba(115, 51, 129, 0),
+    rgba(171, 35, 115, 1)
+  ); /* Gradient background */
+  z-index: 30; /* Ensure the linear filter is above other elements */
+}
+
+#title {
+  font-weight: bold; /* Make the title text bold */
+  position: absolute; /* Position the title absolutely within the figure */
+  top: 50%; /* Center the title vertically */
+  left: 50%; /* Center the title horizontally */
+  transform: translate(-50%, -50%); /* Adjust position to center the title */
+  color: white; /* Set title text color to white for better visibility */
+  font-size: 2em; /* Set font size for the title */
+  text-align: center; /* Center the title text */
+  z-index: 40; /* Ensure the title is above other elements */
+}
+
+#caption-1,
+#caption-2,
+#caption-3 {
+  position: absolute; /* Position captions absolutely within the figure */
+  color: white; /* Set caption text color to white for better visibility */
+  text-align: center; /* Center the caption text */
+  bottom: 10px; /* Position the caption at the bottom of the image */
+  z-index: 50; /* Ensure the caption is above other elements */
+}
+
+#caption-1 {
+  bottom: 40px; /* Position the first caption at the bottom */
+  right: 10px; /* Position the first caption to the left */
+  width: 250px; /* Set width for the first caption */
+}
+
+#caption-2 {
+  top: 10px; /* Position the second caption at the top */
+  padding: 10px; /* Padding around the second caption */
+}
+
+#caption-3 {
+  right: 0; /* Position the third caption to the left */
+  top: 22%; /* Position the third caption at 20% from the top */
+  width: 200px; /* Set width for the third caption */
+  padding-right: 5px; /* Padding around the third caption */
+}
