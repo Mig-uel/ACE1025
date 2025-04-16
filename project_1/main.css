@@ -1,0 +1,112 @@
+:root {
+  --primary-color: rgb(0, 0, 0);
+  --secondary-color: rgb(255, 255, 255);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.container-fluid {
+  margin: 0 auto;
+  max-width: 1280px;
+  min-height: 100vh;
+  background-color: var(--secondary-color);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.navbar-title {
+  font-size: 24px;
+  color: var(--primary-color);
+  margin-left: 20px;
+  display: flex;
+  align-items: center; /* Added alignment for better layout */
+  justify-content: center; /* Center the title vertically */
+  font-weight: bold; /* Make the title bold for emphasis */
+  margin: 20px; /* Maintain left margin for spacing */
+  gap: 10px; /* Add gap between title and logo */
+}
+
+.navbar-logo {
+  width: 40px;
+  height: 40px;
+}
+
+.navbar-links {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  gap: 20px;
+  margin-right: 20px;
+  font-size: 18px;
+  color: var(--primary-color);
+  font-weight: bold; /* Make the links bold for emphasis */
+}
+
+.navbar-button {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold; /* Make the button text bold for emphasis */
+}
+
+.hero {
+  display: flex;
+  flex-direction: column; /* Stack image and text vertically */
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  gap: 40px; /* Add gap between image and text */
+}
+
+.hero-heading {
+  display: flex;
+  justify-content: center; /* Center the heading text */
+  align-items: center; /* Center the heading vertically */
+  gap: 20px; /* Add gap between heading and image */
+  font-size: 24px;
+  color: var(--primary-color);
+  text-align: center; /* Center the heading text */
+  font-weight: bold; /* Make the heading bold for emphasis */
+}
+
+.hero-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+}
+
+.hero-text {
+  font-size: 18px;
+  color: var(--primary-color);
+  text-align: center; /* Center the text */
+  width: 60%; /* Limit the width of the text for better readability */
+  margin: 0 auto; /* Center the text block */
+  line-height: 1.5; /* Improve line spacing for readability */
+}
+
+.hero-text-quote {
+  font-style: italic;
+}
