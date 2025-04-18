@@ -383,8 +383,6 @@ footer {
 .partners-become-partner a:hover {
   border-bottom: 2px solid var(--primary-color); /* Add underline on hover */
   text-decoration: none; /* Remove default underline */
-  transition-duration: 0.3s; /* Add transition duration for smooth effect */
-  transition-timing-function: linear; /* Add timing function for smooth effect */
 }
 
 @media (min-width: 768px) {
