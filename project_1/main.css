@@ -229,6 +229,73 @@ a:hover {
   border-radius: 50%; /* Rounded corners for the profile picture */
 }
 
+.customer-feed-carousel {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding-top: 20px;
+  min-height: 200px;
+}
+
+.carousel-fade {
+  position: relative;
+}
+
+.customer-feed-review {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  animation: fadeCarousel 24s infinite;
+  transition: opacity 1s ease-in-out;
+}
+
+.customer-feed-review:nth-child(1) {
+  animation-delay: 0s;
+}
+.customer-feed-review:nth-child(2) {
+  animation-delay: 6s;
+}
+.customer-feed-review:nth-child(3) {
+  animation-delay: 12s;
+}
+.customer-feed-review:nth-child(4) {
+  animation-delay: 18s;
+}
+
+@keyframes fadeCarousel {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  4%,
+  21% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeCarousel {
+  0% {
+    opacity: 0;
+  }
+  4% {
+    opacity: 1;
+  }
+  21% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 .get-notified-container {
   background-color: var(
     --primary-color
