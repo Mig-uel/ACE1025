@@ -200,11 +200,7 @@ a:hover {
 }
 
 .customer-feed-review-comment {
-  display: flex;
-  justify-content: center; /* Center the comment text */
-  align-items: center; /* Center the comment text vertically */
-  gap: 20px; /* Add gap between comment and profile picture */
-  font-size: 18px; /* Set font size for comment text */
+  font-size: 1rem; /* Set font size for comment text */
   color: var(--primary-color); /* Set comment text color */
   line-height: 1.5; /* Improve line spacing for readability */
   text-align: center; /* Center the comment text */
@@ -222,14 +218,14 @@ a:hover {
   justify-content: center; /* Center the author text */
   align-items: center; /* Center the author text vertically */
   gap: 20px; /* Add gap between author and profile picture */
-  font-size: 18px; /* Set font size for author text */
+  font-size: 1rem; /* Set font size for author text */
   color: var(--primary-color); /* Set author text color */
   font-weight: bold; /* Make the author text bold for emphasis */
 }
 
 .customer-feed-review-pfp {
-  width: 40px; /* Set a fixed width for the profile picture */
-  height: 40px; /* Set height to fill the review section */
+  width: 30px; /* Set a fixed width for the profile picture */
+  height: 30px; /* Set height to fill the review section */
   border-radius: 50%; /* Rounded corners for the profile picture */
 }
 
@@ -305,6 +301,40 @@ footer {
 }
 
 @media (min-width: 768px) {
+  .customer-feed-review-comment {
+    display: flex;
+    justify-content: center; /* Center the comment text */
+    align-items: center; /* Center the comment text vertically */
+    gap: 20px; /* Add gap between comment and profile picture */
+    font-size: 18px; /* Set font size for comment text */
+    color: var(--primary-color); /* Set comment text color */
+    line-height: 1.5; /* Improve line spacing for readability */
+    text-align: center; /* Center the comment text */
+    font-style: italic; /* Italicize the comment text */
+
+    max-width: 800px; /* Limit the width of the comment text for better readability */
+    width: 100%; /* Set width to 100% for responsiveness */
+    margin: 0 auto; /* Center the comment text block */
+
+    padding: 30px 50px 20px; /* Add padding to the comment text for better spacing */
+  }
+
+  .customer-feed-review-author {
+    display: flex;
+    justify-content: center; /* Center the author text */
+    align-items: center; /* Center the author text vertically */
+    gap: 20px; /* Add gap between author and profile picture */
+    font-size: 18px; /* Set font size for author text */
+    color: var(--primary-color); /* Set author text color */
+    font-weight: bold; /* Make the author text bold for emphasis */
+  }
+
+  .customer-feed-review-pfp {
+    width: 40px; /* Set a fixed width for the profile picture */
+    height: 40px; /* Set height to fill the review section */
+    border-radius: 50%; /* Rounded corners for the profile picture */
+  }
+
   .features {
     display: flex;
     flex-direction: column;
