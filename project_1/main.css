@@ -367,6 +367,26 @@ footer {
   height: 100px; /* Set height for the footer */
 }
 
+.partners {
+  display: flex;
+  flex-direction: column; /* Stack partner logos vertically */
+  justify-content: center; /* Center the partner logos */
+  align-items: center; /* Center the partner logos vertically */
+  gap: 10px; /* Add gap between partner logos */
+}
+
+.partners-become-partner {
+  text-align: center;
+  font-size: 1rem; /* Set font size for partner text */
+}
+
+.partners-become-partner a:hover {
+  border-bottom: 2px solid var(--primary-color); /* Add underline on hover */
+  text-decoration: none; /* Remove default underline */
+  transition-duration: 0.3s; /* Add transition duration for smooth effect */
+  transition-timing-function: linear; /* Add timing function for smooth effect */
+}
+
 @media (min-width: 768px) {
   .customer-feed-review-comment {
     display: flex;
