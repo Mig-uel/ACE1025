@@ -238,10 +238,25 @@ a:hover {
   gap: 20px; /* Add gap between author and profile picture */
   font-size: 18px; /* Set font size for author text */
   color: var(--primary-color); /* Set author text color */
+  font-weight: bold; /* Make the author text bold for emphasis */
 }
 
 .customer-feed-review-pfp {
   width: 40px; /* Set a fixed width for the profile picture */
   height: 40px; /* Set height to fill the review section */
   border-radius: 50%; /* Rounded corners for the profile picture */
+}
+
+footer {
+  display: flex;
+  justify-content: center; /* Center the footer content */
+  align-items: center; /* Center the footer content vertically */
+  gap: 20px; /* Add gap between footer elements */
+  padding: 20px; /* Add padding to the footer */
+  background-color: var(
+    --primary-color
+  ); /* Set background color for the footer */
+  color: var(--secondary-color); /* Set text color for the footer */
+  font-size: 18px; /* Set font size for footer text */
+  height: 400px; /* Set height for the footer */
 }
