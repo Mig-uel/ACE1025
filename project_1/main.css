@@ -551,6 +551,11 @@ footer {
     height: 100px; /* Set height for the footer */
   }
 
+  .partners-become-partner {
+    text-align: center;
+    font-size: 1.2rem; /* Set font size for partner text */
+  }
+
   .partners {
     flex-direction: row; /* Stack partner logos vertically */
     gap: 10px; /* Add gap between partner logos */
