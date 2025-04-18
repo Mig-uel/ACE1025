@@ -2,16 +2,21 @@
 <html lang="en">
 
 <head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Special+Gothic+Expanded+One&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="main.css">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GrubMaps</title>
 </head>
 
-<body>
+<body class="roboto-body">
   <div class="container-fluid">
     <!-- Navbar -->
-    <nav class="navbar">
+    <!-- <nav class="navbar">
       <div class="navbar-title">
         <a href="#">
           <img class="navbar-logo" src="./public/images/logo-dark.png" alt="GrubMaps logo" />
@@ -27,13 +32,13 @@
           <a href="#">Get Notified</a>
         </span>
       </div>
-    </nav>
+    </nav> -->
 
     <!-- Hero Banner -->
     <section class="hero">
       <div class="hero-heading">
-        <img src="./public/images/logo-dark.png" alt="" class="hero-image">
-        <h1 class="">GrubMaps</h1>
+        <img src="./public/images/logo-light.png" alt="" class="hero-image">
+        <h1 class="special-gothic-expanded-one-regular">GrubMaps</h1>
       </div>
 
       <div class="hero-text">
@@ -43,10 +48,99 @@
           GrubMaps makes discovering and ordering from your favorite local food trucks fast, easy, and delicious.
         </p>
       </div>
-
+      <div class="hero-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+          class="bi bi-arrow-down-circle" viewBox="0 0 16 16">
+          <path fill-rule="evenodd"
+            d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z" />
+        </svg></div>
     </section>
 
-    <!-- Main Content -->
+    <!-- Features -->
+    <div class="section-container">
+      <h2 class="section-heading special-gothic-expanded-one-regular">Features</h2>
+
+      <section class="features">
+        <div class="features-one">
+          <div class="features-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-crosshair2"
+              viewBox="0 0 16 16">
+              <path
+                d="M8 0a.5.5 0 0 1 .5.5v.518A7 7 0 0 1 14.982 7.5h.518a.5.5 0 0 1 0 1h-.518A7 7 0 0 1 8.5 14.982v.518a.5.5 0 0 1-1 0v-.518A7 7 0 0 1 1.018 8.5H.5a.5.5 0 0 1 0-1h.518A7 7 0 0 1 7.5 1.018V.5A.5.5 0 0 1 8 0m-.5 2.02A6 6 0 0 0 2.02 7.5h1.005A5 5 0 0 1 7.5 3.025zm1 1.005A5 5 0 0 1 12.975 7.5h1.005A6 6 0 0 0 8.5 2.02zM12.975 8.5A5 5 0 0 1 8.5 12.975v1.005a6 6 0 0 0 5.48-5.48zM7.5 12.975A5 5 0 0 1 3.025 8.5H2.02a6 6 0 0 0 5.48 5.48zM10 8a2 2 0 1 0-4 0 2 2 0 0 0 4 0" />
+            </svg>
+          </div>
+
+          <div class="features-content">
+            <h3>Live Truck Tracking</h3>
+            <p>Get real-time updates on food truck locations and schedules, so you always know where your favorites are
+              and when they’ll be around.</p>
+          </div>
+        </div>
+
+        <div class="features-two">
+          <div class="features-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-radar"
+              viewBox="0 0 16 16">
+              <path
+                d="M6.634 1.135A7 7 0 0 1 15 8a.5.5 0 0 1-1 0 6 6 0 1 0-6.5 5.98v-1.005A5 5 0 1 1 13 8a.5.5 0 0 1-1 0 4 4 0 1 0-4.5 3.969v-1.011A2.999 2.999 0 1 1 11 8a.5.5 0 0 1-1 0 2 2 0 1 0-2.5 1.936v-1.07a1 1 0 1 1 1 0V15.5a.5.5 0 0 1-1 0v-.518a7 7 0 0 1-.866-13.847" />
+            </svg>
+          </div>
+
+          <div class="features-content">
+            <h3>Discover New Food Trucks Near You</h3>
+            <p>Explore and discover new food trucks based on your location and preferences, with access to menus and
+              specials.</p>
+          </div>
+        </div>
+
+        <div class="features-three">
+          <div class="features-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+              class="bi bi-postage-fill" viewBox="0 0 16 16">
+              <path d="M4.5 3a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5z" />
+              <path
+                d="M3.5 1a1 1 0 0 0 1-1h1a1 1 0 0 0 2 0h1a1 1 0 0 0 2 0h1a1 1 0 1 0 2 0H15v1a1 1 0 1 0 0 2v1a1 1 0 1 0 0 2v1a1 1 0 1 0 0 2v1a1 1 0 1 0 0 2v1a1 1 0 1 0 0 2v1h-1.5a1 1 0 1 0-2 0h-1a1 1 0 1 0-2 0h-1a1 1 0 1 0-2 0h-1a1 1 0 1 0-2 0H1v-1a1 1 0 1 0 0-2v-1a1 1 0 1 0 0-2V9a1 1 0 1 0 0-2V6a1 1 0 0 0 0-2V3a1 1 0 0 0 0-2V0h1.5a1 1 0 0 0 1 1M3 3v10a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1" />
+            </svg>
+          </div>
+
+          <div class="features-content">
+            <h3>GrubStamps™ Collect & Earn</h3>
+            <p>Earn collectible stamps for every truck you visit or food item you order. Complete sets to unlock
+              exclusive rewards, secret menu items, and more.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+
+    <!-- Partners -->
+    <div class="section-container">
+      <h2 class="section-heading">Partners</h2>
+
+      <section class="features">
+
+        <div class="features-one">
+
+        </div>
+
+        <div class="features-two">
+
+        </div>
+
+        <div class="features-three">
+
+        </div>
+      </section>
+    </div>
+
+    <!-- Get Notified -->
+    <div class="section-container">
+      <h2 class="section-heading">Get Notified</h2>
+
+
+    </div>
+
+    <!-- Footer -->
+
   </div>
 </body>
 

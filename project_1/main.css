@@ -1,6 +1,7 @@
 :root {
   --primary-color: rgb(0, 0, 0);
   --secondary-color: rgb(255, 255, 255);
+  --light-gray: rgb(240, 240, 240);
 }
 
 * {
@@ -31,6 +32,7 @@ a:hover {
   justify-content: space-between;
   align-items: center;
   padding: 20px;
+  position: sticky;
 }
 
 .navbar-title {
@@ -72,6 +74,20 @@ a:hover {
   font-weight: bold; /* Make the button text bold for emphasis */
 }
 
+.special-gothic-expanded-one-regular {
+  font-family: 'Special Gothic Expanded One', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.roboto-body {
+  font-family: 'Roboto', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: 'wdth' 100;
+}
+
 .hero {
   display: flex;
   flex-direction: column; /* Stack image and text vertically */
@@ -79,6 +95,11 @@ a:hover {
   align-items: center;
   height: 100vh;
   gap: 40px; /* Add gap between image and text */
+  position: relative; /* Ensure positioning context for child elements */
+  background-color: var(
+    --primary-color
+  ); /* Set background color for the hero section */
+  color: var(--secondary-color); /* Set text color for the hero section */
 }
 
 .hero-heading {
@@ -87,7 +108,6 @@ a:hover {
   align-items: center; /* Center the heading vertically */
   gap: 20px; /* Add gap between heading and image */
   font-size: 24px;
-  color: var(--primary-color);
   text-align: center; /* Center the heading text */
   font-weight: bold; /* Make the heading bold for emphasis */
 }
@@ -100,7 +120,6 @@ a:hover {
 
 .hero-text {
   font-size: 18px;
-  color: var(--primary-color);
   text-align: center; /* Center the text */
   width: 60%; /* Limit the width of the text for better readability */
   margin: 0 auto; /* Center the text block */
@@ -109,4 +128,75 @@ a:hover {
 
 .hero-text-quote {
   font-style: italic;
+}
+
+.hero-arrow {
+  position: absolute;
+  bottom: 25px; /* Position the arrow at the bottom of the hero section */
+  left: 50%; /* Center the arrow horizontally */
+  width: 40px; /* Set a fixed width for the arrow */
+  height: 40px; /* Set a fixed height for the arrow */
+  background-color: var(
+    --primary-color
+  ); /* Set background color for the arrow */
+}
+
+.section-container {
+  padding: 100px 0; /* Add padding to the section container */
+}
+
+.features {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px; /* Add gap between feature sections */
+  padding: 40px 0; /* Add padding to the top of the features section */
+}
+
+.features .features-one,
+.features .features-two,
+.features .features-three {
+  display: flex;
+  align-items: center;
+  background-color: var(
+    --light-gray
+  ); /* Light gray background for feature sections */
+
+  width: 100%;
+  max-width: 800px; /* Limit the width of feature sections */
+  height: 200px; /* Set a fixed height for feature sections */
+  border-radius: 10px; /* Rounded corners for feature sections */
+  gap: 20px; /* Add gap between icon and content */
+}
+
+.features-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: inherit;
+  width: 25%; /* Set a fixed width for the icon */
+  color: var(--secondary-color); /* Set icon color */
+  background-color: var(
+    --primary-color
+  ); /* Set background color for the icon */
+  border-radius: 10px 0 0 10px; /* Rounded corners for the icon */
+}
+
+.features-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 55%; /* Set a fixed width for the content */
+  color: var(--primary-color); /* Set content color */
+  line-height: 1.5; /* Improve line spacing for readability */
+  gap: 10px; /* Add gap between content elements */
+}
+
+.section-heading {
+  color: var(--primary-color);
+  text-align: center; /* Center the section heading */
+}
+
+@media (min-width: 768px) {
 }
