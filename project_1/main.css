@@ -269,7 +269,7 @@ a:hover {
   max-width: 800px; /* Limit the width of the content for better readability */
   width: 100%; /* Set width to 100% for responsiveness */
   margin: 0 auto; /* Center the content block */
-  padding: 30px 50px 20px; /* Add padding to the content for better spacing */
+  padding: 60px 50px 0; /* Add padding to the content for better spacing */
 }
 
 .get-notified-desc ul {
@@ -282,7 +282,7 @@ a:hover {
 }
 
 .get-notified-form input {
-  padding: 15px; /* Add padding to the input field */
+  padding: 15px 30px; /* Add padding to the input field */
   border-radius: 20px; /* Rounded corners for the input field */
   border: none; /* Remove border for a cleaner look */
   font-size: 16px; /* Set font size for input text */
