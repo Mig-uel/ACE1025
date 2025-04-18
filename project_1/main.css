@@ -247,16 +247,65 @@ a:hover {
   border-radius: 50%; /* Rounded corners for the profile picture */
 }
 
+.get-notified-container {
+  background-color: var(
+    --primary-color
+  ); /* Set background color for the get notified section */
+  color: var(
+    --secondary-color
+  ); /* Set text color for the get notified section */
+  padding: 50px 0; /* Add padding to the get notified section */
+}
+
+.get-notified-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center the content */
+  align-items: center; /* Center the content vertically */
+  gap: 20px; /* Add gap between content elements */
+  font-size: 18px; /* Set font size for content text */
+  line-height: 1.5; /* Improve line spacing for readability */
+  text-align: center; /* Center the content text */
+  max-width: 800px; /* Limit the width of the content for better readability */
+  width: 100%; /* Set width to 100% for responsiveness */
+  margin: 0 auto; /* Center the content block */
+  padding: 30px 50px 20px; /* Add padding to the content for better spacing */
+}
+
+.get-notified-desc ul {
+  list-style: none; /* Remove default list style */
+  padding: 30px 0; /* Remove default padding */
+  margin: 0 auto; /* Remove default margin */
+  text-align: left; /* Align list items to the left */
+  width: 100%; /* Set width to 100% for responsiveness */
+  max-width: 300px; /* Limit the width of the list for better readability */
+}
+
+.get-notified-form input {
+  padding: 15px; /* Add padding to the input field */
+  border-radius: 20px; /* Rounded corners for the input field */
+  border: none; /* Remove border for a cleaner look */
+  font-size: 16px; /* Set font size for input text */
+}
+
+.get-notified-form button {
+  color: var(--primary-color); /* Set text color for the button */
+  padding: 15px 30px; /* Add padding to the button */
+  border-radius: 20px; /* Rounded corners for the button */
+  border: none; /* Remove border for a cleaner look */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  font-size: 16px; /* Set font size for button text */
+}
+
 footer {
   display: flex;
   justify-content: center; /* Center the footer content */
   align-items: center; /* Center the footer content vertically */
   gap: 20px; /* Add gap between footer elements */
-  padding: 20px; /* Add padding to the footer */
   background-color: var(
     --primary-color
   ); /* Set background color for the footer */
   color: var(--secondary-color); /* Set text color for the footer */
   font-size: 18px; /* Set font size for footer text */
-  height: 400px; /* Set height for the footer */
+  height: 100px; /* Set height for the footer */
 }
