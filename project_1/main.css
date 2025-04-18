@@ -279,6 +279,7 @@ a:hover {
   text-align: left; /* Align list items to the left */
   width: 100%; /* Set width to 100% for responsiveness */
   max-width: 300px; /* Limit the width of the list for better readability */
+  line-height: 1.5; /* Improve line spacing for readability */
 }
 
 .get-notified-form input {
