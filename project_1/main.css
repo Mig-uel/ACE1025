@@ -112,10 +112,9 @@ a:hover {
 }
 
 .hero-text {
-  font-size: 18px;
+  font-size: 1rem; /* Set font size for the text */
   text-align: center; /* Center the text */
-  width: 60%; /* Limit the width of the text for better readability */
-  margin: 0 auto; /* Center the text block */
+  width: 80%; /* Limit the width of the text for better readability */
   line-height: 1.5; /* Improve line spacing for readability */
 }
 
@@ -310,6 +309,13 @@ footer {
     align-items: center; /* Center the heading vertically */
     gap: 20px; /* Add gap between heading and image */
     font-size: 2rem;
+  }
+
+  .hero-text {
+    font-size: 1.2rem;
+    text-align: center; /* Center the text */
+    width: 60%; /* Limit the width of the text for better readability */
+    line-height: 1.5; /* Improve line spacing for readability */
   }
 
   .hero-icon {
