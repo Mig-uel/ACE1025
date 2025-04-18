@@ -112,10 +112,18 @@ a:hover {
   font-weight: bold; /* Make the heading bold for emphasis */
 }
 
-.hero-image {
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
+.hero-icon {
+  width: 70px; /* Set a fixed width for the icon */
+  height: 70px; /* Set a fixed height for the icon */
+  color: var(--primary-color);
+  background-color: var(
+    --secondary-color
+  ); /* Set background color for the icon */
+  border-radius: 10px; /* Make the icon circular */
+  display: flex; /* Use flex-box for centering the icon */
+  justify-content: center; /* Center the icon horizontally */
+  align-items: center; /* Center the icon vertically */
+  cursor: pointer; /* Change cursor to pointer on hover */
 }
 
 .hero-text {
