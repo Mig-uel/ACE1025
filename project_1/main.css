@@ -550,4 +550,10 @@ footer {
     font-size: 1.2rem; /* Set font size for footer text */
     height: 100px; /* Set height for the footer */
   }
+
+  .partners {
+    flex-direction: row; /* Stack partner logos vertically */
+    gap: 10px; /* Add gap between partner logos */
+    min-width: 800px; /* Set width for the partners section */
+  }
 }
