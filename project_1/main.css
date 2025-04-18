@@ -382,8 +382,8 @@ footer {
 .partners .partners-two,
 .partners .partners-three,
 .partners .partners-four {
-  width: 150px;
-  height: 150px; /* Set a fixed height for partner logos */
+  width: 200px;
+  height: 200px; /* Set a fixed height for partner logos */
   border-radius: 10px; /* Rounded corners for partner logos */
   background-color: var(
     --light-gray
