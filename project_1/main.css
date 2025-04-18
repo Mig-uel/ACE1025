@@ -373,6 +373,28 @@ footer {
   justify-content: center; /* Center the partner logos */
   align-items: center; /* Center the partner logos vertically */
   gap: 10px; /* Add gap between partner logos */
+  width: 150px; /* Set width for the partners section */
+  margin: 0 auto; /* Center the partner logos */
+  padding: 50px 0; /* Add padding to the partners section */
+}
+
+.partners .partners-one,
+.partners .partners-two,
+.partners .partners-three,
+.partners .partners-four {
+  width: 150px;
+  height: 150px; /* Set a fixed height for partner logos */
+  border-radius: 10px; /* Rounded corners for partner logos */
+  background-color: var(
+    --light-gray
+  ); /* Light gray background for partner logos */
+}
+
+.partners-logo {
+  width: 100%; /* Set width to 100% for responsiveness */
+  height: 100%; /* Set height to fill the partner logo section */
+  border-radius: 10px; /* Rounded corners for partner logos */
+  padding: 10px;
 }
 
 .partners-become-partner {
