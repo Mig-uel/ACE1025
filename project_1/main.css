@@ -104,13 +104,7 @@ a:hover {
 }
 
 .hero-heading {
-  display: flex;
-  justify-content: center; /* Center the heading text */
-  align-items: center; /* Center the heading vertically */
-  gap: 20px; /* Add gap between heading and image */
-  font-size: 24px;
-  text-align: center; /* Center the heading text */
-  font-weight: bold; /* Make the heading bold for emphasis */
+  font-size: 1.5rem;
 }
 
 .hero-icon {
@@ -310,6 +304,14 @@ footer {
 }
 
 @media (min-width: 768px) {
+  .hero-heading {
+    display: flex;
+    justify-content: center; /* Center the heading text */
+    align-items: center; /* Center the heading vertically */
+    gap: 20px; /* Add gap between heading and image */
+    font-size: 2rem;
+  }
+
   .hero-icon {
     width: 70px; /* Set a fixed width for the icon */
     height: 70px; /* Set a fixed height for the icon */
