@@ -355,18 +355,6 @@ a:hover {
   cursor: pointer; /* Change cursor to pointer on hover */
 }
 
-footer {
-  display: flex;
-  justify-content: center; /* Center the footer content */
-  align-items: center; /* Center the footer content vertically */
-  background-color: var(
-    --primary-color
-  ); /* Set background color for the footer */
-  color: var(--secondary-color); /* Set text color for the footer */
-  font-size: 1rem; /* Set font size for footer text */
-  height: 100px; /* Set height for the footer */
-}
-
 .partners {
   display: flex;
   flex-direction: column; /* Stack partner logos vertically */
@@ -405,6 +393,28 @@ footer {
 .partners-become-partner a:hover {
   border-bottom: 2px solid var(--primary-color); /* Add underline on hover */
   text-decoration: none; /* Remove default underline */
+}
+
+footer {
+  background-color: var(
+    --primary-color
+  ); /* Set background color for the footer */
+  color: var(--secondary-color); /* Set text color for the footer */
+  font-size: 1rem; /* Set font size for footer text */
+  padding-bottom: 20px; /* Add padding to the bottom of the footer */
+}
+
+.footer {
+  display: flex;
+  flex-direction: column; /* Stack footer elements vertically */
+  justify-content: center; /* Center the footer content */
+  align-items: center; /* Center the footer content vertically */
+  gap: 20px; /* Add gap between footer elements */
+  padding-bottom: 20px; /* Add padding to the bottom of the footer */
+}
+
+.footer-copyright {
+  text-align: center; /* Center the copyright text */
 }
 
 @media (min-width: 768px) {
@@ -538,17 +548,17 @@ footer {
     font-size: 1.2rem; /* Increase font size for larger screens */
   }
 
-  footer {
+  .footer {
     display: flex;
+    flex-direction: row; /* Stack footer elements vertically */
     justify-content: center; /* Center the footer content */
     align-items: center; /* Center the footer content vertically */
     gap: 20px; /* Add gap between footer elements */
-    background-color: var(
-      --primary-color
-    ); /* Set background color for the footer */
-    color: var(--secondary-color); /* Set text color for the footer */
-    font-size: 1.2rem; /* Set font size for footer text */
-    height: 100px; /* Set height for the footer */
+    padding-bottom: 20px; /* Add padding to the bottom of the footer */
+  }
+
+  .footer-copyright {
+    text-align: center; /* Center the copyright text */
   }
 
   .partners-become-partner {
