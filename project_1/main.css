@@ -263,7 +263,7 @@ a:hover {
   justify-content: center; /* Center the content */
   align-items: center; /* Center the content vertically */
   gap: 20px; /* Add gap between content elements */
-  font-size: 18px; /* Set font size for content text */
+  font-size: 1rem; /* Set font size for content text */
   line-height: 1.5; /* Improve line spacing for readability */
   text-align: center; /* Center the content text */
   max-width: 800px; /* Limit the width of the content for better readability */
@@ -278,35 +278,72 @@ a:hover {
   margin: 0 auto; /* Remove default margin */
   text-align: left; /* Align list items to the left */
   width: 100%; /* Set width to 100% for responsiveness */
-  max-width: 300px; /* Limit the width of the list for better readability */
+  max-width: 250px; /* Limit the width of the list for better readability */
   line-height: 1.5; /* Improve line spacing for readability */
+}
+
+.get-notified-form {
+  display: flex;
+  flex-direction: column; /* Stack input and button vertically */
+  justify-content: center; /* Center the form */
+  align-items: center; /* Center the form vertically */
+  gap: 10px; /* Add gap between input and button */
+  font-size: 1rem; /* Set font size for form text */
 }
 
 .get-notified-form input {
   padding: 15px 30px; /* Add padding to the input field */
   border-radius: 20px; /* Rounded corners for the input field */
   border: none; /* Remove border for a cleaner look */
-  font-size: 16px; /* Set font size for input text */
 }
 
 .get-notified-form button {
+  font-weight: bold; /* Make the button text bold for emphasis */
   color: var(--primary-color); /* Set text color for the button */
   padding: 15px 30px; /* Add padding to the button */
   border-radius: 20px; /* Rounded corners for the button */
   border: none; /* Remove border for a cleaner look */
   cursor: pointer; /* Change cursor to pointer on hover */
-  font-size: 16px; /* Set font size for button text */
 }
 
 footer {
   display: flex;
   justify-content: center; /* Center the footer content */
   align-items: center; /* Center the footer content vertically */
-  gap: 20px; /* Add gap between footer elements */
   background-color: var(
     --primary-color
   ); /* Set background color for the footer */
   color: var(--secondary-color); /* Set text color for the footer */
-  font-size: 18px; /* Set font size for footer text */
+  font-size: 1rem; /* Set font size for footer text */
   height: 100px; /* Set height for the footer */
+}
+
+@media (min-width: 768px) {
+  .get-notified-content {
+    font-size: 1.2rem; /* Increase font size for larger screens */
+  }
+
+  .get-notified-desc ul {
+    max-width: 300px; /* Increase max width for larger screens */
+  }
+
+  .get-notified-form {
+    flex-direction: row; /* Stack input and button horizontally on larger screens */
+    justify-content: center; /* Space out input and button */
+    gap: 10px; /* Add gap between input and button */
+    font-size: 1.2rem; /* Increase font size for larger screens */
+  }
+
+  footer {
+    display: flex;
+    justify-content: center; /* Center the footer content */
+    align-items: center; /* Center the footer content vertically */
+    gap: 20px; /* Add gap between footer elements */
+    background-color: var(
+      --primary-color
+    ); /* Set background color for the footer */
+    color: var(--secondary-color); /* Set text color for the footer */
+    font-size: 1.2rem; /* Set font size for footer text */
+    height: 100px; /* Set height for the footer */
+  }
 }
