@@ -85,3 +85,70 @@ print(f"Is the word 'we' in 'message'? {is_we}")
 
 is_not_today = 'Today' not in message
 print(f"Is the word 'Today' not in 'message'? {is_not_today}")
+
+"""
+List
+Lists are the same as array in other programming languages.
+"""
+print('\n----- Example 19: List ----- ')
+colors = ["orange", "magenta", "olive"]
+numbers = [6, 20, -9, 5, -12]
+mixed = [True, "Cat", 13, "peter"]
+empty_list = []
+
+print(f"Colors List: {colors}")
+print(f"Numbers List: {numbers}")
+print(f"Mixed List: {mixed}")
+print(f"Empty List: {empty_list}")
+
+# list indexes
+print(f"Second Color: {colors[1]}")
+print(f"First Number: {numbers[0]}")
+# print(f"Third Value: {empty_list[2]}") # will not work
+
+# negative indexing (starting from the right of the list)
+print(f"Last Color: {colors[-1]}")
+print(f"Third Last Number: {numbers[-3]}")
+
+print('\n----- Example 20: +, * Operator on Lists ----- ')
+# concatenate the first color with the last color
+new_color = colors[0] + colors[-1]
+print(f"The new color is: {new_color}")
+
+# concatenate the second color with the third number
+# new_word = colors[1] + numbers[2] # data type error int and string
+
+tripled_color = colors[0]*3
+print(f"Tripled color with '*': {tripled_color}")
+
+print('\n----- Example 21: in, not in Statement ----- ')
+# remove last color
+colors.pop()
+print(f"Colors list popped: {colors}")
+
+print('\n----- Example 22: Add items to the list ----- ')
+# append item to the end of colors list
+colors.append("PINK")
+print(f"'PINK' appended to the colors list: {colors}")
+
+print('\n----- Example 23: Sorting ----- ')
+# sort list
+print(f"Sorted colors list: {colors.sort()}")
+
+print('\n----- Example 24: count Method ----- ')
+bool_list = [True, True, False]
+count_true = bool_list.count(True)
+print(f"'True' count in the bool_list: {count_true}")
+
+# count non-existing value
+count_red = colors.count('red')
+print(f"'red' count in colors list: {count_red}")
+
+print('\n----- Example 25: Length of List ----- ')
+length_colors = len(colors)
+print(f"Length of colors list is: {length_colors}")
+
+print('\n----- Example 26: index Method ----- ')
+# index of color 'olive'
+# index_olive = colors.index('olive') # ValueError
+# print(f"Index of the color 'olive': {index_olive}") # ValueError
