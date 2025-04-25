@@ -5,7 +5,7 @@ Lab 9 Exercise
 """
 import math
 
-print('******* Grade Average Calculator *******\n')
+print('******* GPA Calculator *******\n')
 
 grade_1 = float(input('Enter grade 1: '))
 grade_2 = float(input('Enter grade 2: '))
