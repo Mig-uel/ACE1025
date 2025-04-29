@@ -4,7 +4,13 @@ Lab 11: Dictionary, Functions, Classes
 April 27, 2025
 """
 
-print("----- Example 1: Python Dictionary")
+# import 'lab11_classes.py'
+import lab11_classes
+
+# import 'lab11_functions.py'
+import lab11_functions
+
+print("----- Example 1: Python Dictionary -----")
 
 # create a dictionary
 car = {"brand": "Ford", "model": "Mustang", "year": 1964}
@@ -23,23 +29,23 @@ print(f"The year of the car was updated to: {car['year']}")
 car["color"] = "red"
 print(car)
 
-print("\n----- Example 2: Loop Through Each Key in Dict.")
+print("\n----- Example 2: Loop Through Each Key in Dict. -----")
 for key in car:
     print(key)
 
-print("\n----- Example 3: Loop Through Each Value in Dict.")
+print("\n----- Example 3: Loop Through Each Value in Dict. -----")
 for key in car:
     print(car[key])
 
-print("\n----- Example 4: Loop Through Each Pair in Dict.")
+print("\n----- Example 4: Loop Through Each Pair in Dict. -----")
 for key in car:
     print(f"{key}: {car[key]}")
 
-print("\n----- Example 5: Check If Key is Present in Dict.")
+print("\n----- Example 5: Check If Key is Present in Dict. -----")
 check = "owner" in car
 print(f"The key 'owner' is in car?: {check}")
 
-print("\n----- Example 6: Python Dictionary Application")
+print("\n----- Example 6: Python Dictionary Application -----")
 
 # given the following list, create a dict. that will count
 # the number of times that a word appears in the string
@@ -59,3 +65,69 @@ for word in phrase_split:
 print("Results of the Phrase Dictionary:")
 for key in phrase_map:
     print(f"'{key}' appears {phrase_map[key]} times")
+
+print("\n----- Example 7: Calling Functions -----")
+
+# call function 'greeting' with no args or return
+lab11_functions.greeting()
+
+# call function 'print_username' with args
+lab11_functions.print_username("Miguel")
+
+# call function 'user_country' with default params
+lab11_functions.user_country()
+lab11_functions.user_country("Martha")
+lab11_functions.user_country("Martha", "Chile")
+
+# call function 'product' with args and returns value
+num1 = 2
+num2 = -6
+calc1 = lab11_functions.product(num1, num2)
+print(f"The product of {num1} and {num2} is {calc1}")
+
+# call function 'multiple3' with args and return a boolean
+checkOne = lab11_functions.multiple3(num1)
+checkTwo = lab11_functions.multiple3(num2)
+print(f"Is {num1} multiple of 3?: {checkOne}")
+print(f"Is {num2} multiple of 3?: {checkTwo}")
+
+# function composition
+number_sum = lab11_functions.sum_numbers(3)
+lab11_functions.print_results(number_sum)
+
+print("\n----- Example 9: Built-in Functions -----")
+rad = 2
+area = lab11_functions.area_circle(rad)
+lab11_functions.print_area(area, rad)
+
+print("\n----- Example 10: Try/Except -----")
+ratio = lab11_functions.hour_ratio(0)
+print(ratio)
+
+print("\n----- Example 11: Classes -----")
+user1 = lab11_classes.MyClass()
+print(user1)
+
+print(f"ID of 'user1': {user1.get_id()}")
+
+print("\n----- Example 12: Instantiating Classes -----")
+# create instance of the class 'ComplexNumber'
+complex_number = lab11_classes.ComplexNumber(2, 3)
+
+# access properties of the instantiated object
+real = complex_number.r
+print(f"The real number of the class is: {real}")
+
+print("\n----- Example 13: Classes (cont.) -----")
+# create instance of a car
+tesla = lab11_classes.Car("Tesla", "S", 2023)
+
+# call tesla 'read_odometer' method
+print(tesla.read_odometer())
+
+# call tesla object 'get_car_description' method
+print(tesla.get_car_description())
+
+# update odometer
+tesla.update_odometer(10)
+tesla.read_odometer()
