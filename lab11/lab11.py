@@ -59,14 +59,3 @@ for word in phrase_split:
 print("Results of the Phrase Dictionary:")
 for key in phrase_map:
     print(f"'{key}' appears {phrase_map[key]} times")
-
-print("\n----- Example 7: Function (no returning values)")
-
-
-# defining a function
-def greeting():
-    print("Welcome to Functions!")
-
-
-# run function 'greeting'
-greeting()
