@@ -1,13 +1,22 @@
-{% extends 'shared/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block title %}
-Boxes4U | Home
-{% endblock %}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/styles.css">
+  <title>Boxes4U | Home</title>
+</head>
 
-{% block content %}
-<div class="hero">
-  <h1>Welcome to Boxes4U!</h1>
-  <p>Your one-stop solution for all your packaging needs.</p>
-  <a href="/shop" class="btn">Shop Now</a>
-</div>
-{% endblock %}
+<body>
+  {% include 'shared/header.html' %}
+
+  {% include 'shared/hero.html' %}
+
+  <div class="container">
+  </div>
+
+  {% include 'shared/footer.html' %}
+</body>
+
+</html>
