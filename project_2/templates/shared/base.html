@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="refresh" content="1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/styles.css">
+  <title>{% block title %}Boxes4U{% endblock %}</title>
+</head>
+
+<body class="roboto">
+  <!-- Header -->
+  {% include 'shared/header.html' %}
+
+  <!-- Main Content -->
+  <main>
+    {% block content %}
+    <!-- Default content can go here if needed -->
+    {% endblock %}
+  </main>
+
+  <!-- Footer -->
+  {% include 'shared/footer.html' %}
+</body>
+
+</html>
