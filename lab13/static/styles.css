@@ -1,0 +1,21 @@
+.title {
+  text-align: center;
+  color: red;
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+
+.image-container,
+.main-container {
+  width: 700px;
+  margin: 2em auto;
+}
+
+.main-container {
+  padding: 2rem;
+  border: 2px solid gray;
+  background-color: aliceblue;
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="/static/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}My Base Page{% endblock %}</title>
+</head>
+
+<body>
+  <header class="title">
+    <h1>
+      {% block heading %}
+      Welcome to the Base Page
+      {% endblock %}
+    </h1>
+  </header>
+
+  <main class="main-container">
+
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Your Company Name</p>
+    <p>All rights reserved.</p>
+  </footer>
+</body>
+
+</html>

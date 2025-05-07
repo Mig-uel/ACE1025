@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="/static/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flask App</title>
+</head>
+
+<body>
+  {% if username %}
+  <h1 class="title">Welcome {{ username }}!</h1>
+  {% else %}
+  <h1 class="title">Welcome to the Flask App!</h1>
+  {% endif %}
+
+  <figure class="image-container">
+    <img src={{url_for('static', filename='images/subway.jpg')}} alt="Subway" width="500" height="300">
+  </figure>
+
+  <section class="main-container">
+    <ul>
+      {% for fruit in fruits_list: %}
+      <li>{{ fruit }}</li>
+      {% endfor %}
+    </ul>
+
+    {% if 'kiwi' in fruits_list: %}
+    <p>Great! We have kiwis today!</p>
+    {% else: %}
+    <p>Sorry, we don't have kiwis today.</p>
+    {% endif %}
+  </section>
+
+</body>
+
+</html>
