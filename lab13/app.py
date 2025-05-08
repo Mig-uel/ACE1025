@@ -1,7 +1,7 @@
 import os
 
 from dotenv import load_dotenv
-from flask import Flask, redirect, render_template, url_for
+from flask import Flask, redirect, render_template, request, url_for
 from flask_sqlalchemy import SQLAlchemy
 
 load_dotenv()  # read .env file
@@ -23,8 +23,11 @@ class UserLogin(db.Model):
     username = db.Column(db.String(80), nullable=False)
 
 
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 def index():
+    if request.method == "POST":
+        return f"<div><h1>Successfully Submitted</h1><p>Username: {request.form['username']}</p><p>Password: {request.form['password']}</p><a href='{request.base_url}'>Go Home</a><div>"
+
     fruits = [
         "apple",
         "orange",
