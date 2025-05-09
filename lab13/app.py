@@ -23,6 +23,13 @@ class UserLogin(db.Model):
     username = db.Column(db.String(80), nullable=False)
 
 
+# define an employee model
+class Employee(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    employee_id = db.Column(db.String(6), unique=True, nullable=False)
+    employee_name = db.Column(db.String(50), nullable=False)
+
+
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
@@ -41,8 +48,21 @@ def about():
     return render_template("about.html")
 
 
-@app.route("/users")
+@app.route("/users", methods=["GET", "POST"])
 def users():
+    if request.method == "POST":
+        form = request.form
+        id = form["employee_id"]
+        name = form["employee_name"]
+
+        # create a new employee object
+        employee = Employee(employee_id=id, employee_name=name)
+
+        db.session.add(employee)
+        db.session.commit()
+
+        return render_template("submitted.html", name=name)
+
     return render_template("users.html")
 
 
