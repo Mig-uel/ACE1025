@@ -25,6 +25,13 @@ class User(db.Model):
 
 
 # Product
+class Product(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50), nullable=False)
+    description = db.Column(db.Text)
+    price = db.Column(db.Numeric(10, 2), nullable=False)
+    qty = db.Column(db.Integer, default=0)
+    image_url = db.Column(db.String(255))
 
 
 @app.route("/")
