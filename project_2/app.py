@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from constants import DB_URI
 from flask import Flask, render_template
 from flask_migrate import Migrate
@@ -32,6 +34,28 @@ class Product(db.Model):
     price = db.Column(db.Numeric(10, 2), nullable=False)
     qty = db.Column(db.Integer, default=0)
     image_url = db.Column(db.String(255))
+
+
+# Order
+class Order(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+    created_at = db.Column(db.DateTime, default=datetime.now())
+    status = db.Column(db.String(20), default="pending")
+    total_amount = db.Column(db.Numeric(10, 2), nullable=False)
+    user = db.relationship("User", backref=db.backref("orders", lazy=True))
+    items = db.relationship(
+        "OrderItem", backref="order", lazy=True, cascade="all, delete-orphan"
+    )
+
+
+# OrderItem
+class OrderItem(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    order_id = db.Column(db.Integer, db.ForeignKey("order.id"), nullable=False)
+    product_id = db.Column(db.Integer, db.ForeignKey("product.id"), nullable=False)
+    qty = db.Column(db.Integer, nullable=False, default=1)
+    price = db.Column(db.Numeric(10, 2), nullable=False)
 
 
 @app.route("/")
