@@ -21,6 +21,7 @@ class User(db.Model):
     last_name = db.Column(db.String(25), nullable=False)
     username = db.Column(db.String(8), nullable=False, unique=True)
     email = db.Column(db.String(25), nullable=False, unique=True)
+    isAdmin = db.Column(db.Boolean, default=False)
 
 
 # Product
