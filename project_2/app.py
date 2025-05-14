@@ -1,14 +1,14 @@
 from datetime import datetime
 
 from constants import DB_URI
-from flask import Flask, render_template, request
+from flask import Flask, redirect, render_template, request
 from flask_bcrypt import Bcrypt
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from psycopg2 import errors
 from sqlalchemy import select
 from sqlalchemy.exc import IntegrityError, SQLAlchemyError
-from utils.sanitize import check_registration
+from utils.sanitize import check_login, check_registration
 
 # init Flask
 app = Flask(__name__)
@@ -95,6 +95,8 @@ def register():
 
             db.session.add(user)
             db.session.commit()
+
+            return redirect("/")
         except IntegrityError as e:
             db.session.rollback()
             orig = e.orig
@@ -122,9 +124,35 @@ def register():
     return render_template("register.html", errors=form_errors)
 
 
-@app.route("/login")
+@app.route("/login", methods=["GET", "POST"])
 def login():
-    return render_template("login.html")
+    form_errors = []
+
+    if request.method == "POST":
+        try:
+            user_data = check_login(request.form)
+
+            query = select(User).where(User.username == user_data["username"])
+            user = db.session.scalar(query)
+
+            if not user:
+                form_errors.append("Invalid username/password")
+                return render_template("login.html", errors=form_errors)
+
+            is_password_valid = bcrypt.check_password_hash(
+                user.password, user_data["password"]
+            )
+
+            if not is_password_valid:
+                form_errors.append("Invalid username/password")
+                return render_template("login.html", errors=form_errors)
+
+            return redirect("/")
+        except Exception as e:
+            for i in e.args[0]:
+                form_errors.append(i)
+
+    return render_template("login.html", errors=form_errors)
 
 
 @app.route("/cart")
