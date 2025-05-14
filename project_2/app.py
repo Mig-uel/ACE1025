@@ -69,12 +69,12 @@ def hello():
 
 @app.route("/register")
 def register():
-    return "register route"
+    return render_template("register.html")
 
 
 @app.route("/login")
 def login():
-    return "login route"
+    return render_template("login.html")
 
 
 @app.route("/cart")
