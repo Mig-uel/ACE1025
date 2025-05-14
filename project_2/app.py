@@ -42,6 +42,7 @@ class Product(db.Model):
     price = db.Column(db.Numeric(10, 2), nullable=False)
     qty = db.Column(db.Integer, default=0)
     image_url = db.Column(db.String(255))
+    category_id = db.Column(db.Integer, db.ForeignKey("category.id"), nullable=True)
 
 
 # Order
@@ -64,6 +65,12 @@ class OrderItem(db.Model):
     product_id = db.Column(db.Integer, db.ForeignKey("product.id"), nullable=False)
     qty = db.Column(db.Integer, nullable=False, default=1)
     price = db.Column(db.Numeric(10, 2), nullable=False)
+
+
+# Category
+class Category(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.Text, unique=True, nullable=False)
 
 
 @app.route("/")
