@@ -57,41 +57,12 @@
   font-family: 'Roboto', sans-serif;
 }
 
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-  color: white;
-
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1;
-}
-
-.nav-links {
-  display: none;
-}
-
-.subheader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 40px 20px;
-  color: white;
-  background-color: #000;
-  position: relative;
-}
-
 .hero {
   height: 500px;
   background-image: url('/static/images/hero.jpg');
   background-size: cover;
   background-position: center;
   text-align: center;
-  position: relative;
 
   display: flex;
   flex-direction: column;
@@ -99,13 +70,6 @@ header {
   align-items: center;
   color: white;
   gap: 20px;
-}
-
-.nav-toggle {
-  display: block;
-  cursor: pointer;
-  padding: 10px;
-  background-color: #000;
 }
 
 footer {
@@ -169,12 +133,4 @@ footer {
 }
 
 @media (min-width: 768px) {
-  .nav-toggle {
-    display: none;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 20px;
-  }
 }
