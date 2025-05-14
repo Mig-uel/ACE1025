@@ -42,7 +42,8 @@ class Product(db.Model):
     price = db.Column(db.Numeric(10, 2), nullable=False)
     qty = db.Column(db.Integer, default=0)
     image_url = db.Column(db.String(255))
-    category_id = db.Column(db.Integer, db.ForeignKey("category.id"), nullable=True)
+    category_id = db.Column(db.Integer, db.ForeignKey("category.id"), nullable=False)
+    category = db.relationship("Category")
 
 
 # Order
