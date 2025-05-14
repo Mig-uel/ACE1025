@@ -67,10 +67,10 @@ class OrderItem(db.Model):
 
 @app.route("/")
 def home():
-    query = select(Product).where()
-    boxes = db.session.scalars(query)
+    query = select(Product)
+    boxes = db.session.scalars(query).all()
 
-    return render_template("index.html", products=boxes.all())
+    return render_template("index.html", products=boxes)
 
 
 @app.route("/register", methods=["GET", "POST"])
