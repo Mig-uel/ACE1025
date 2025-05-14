@@ -1,42 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
+{% block title %}Boxes4U | Home{% endblock %}
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <script src="https://unpkg.com/htmx.org@2.0.4"></script>
-  <link rel="stylesheet" href="/static/styles.css">
-  <title>Boxes4U | Home</title>
-</head>
+{% block header %}
+{% include 'shared/header.html' %}
+{% include 'shared/hero.html' %}
+{% endblock %}
 
-<body>
-  {% include 'shared/header.html' %}
+{% block content %}
+<section class="products">
+  <h2>Products</h2>
 
-  {% include 'shared/hero.html' %}
+  <div class="product-items">
+    {% for box in products %}
+    <div class="product-item">
+      <img src="{{ box.image_url }}" alt="{{ box.name }}" class="product-image">
 
-  <div class="container">
-    <section class="products">
-      <h2>Our Boxes</h2>
-
-      <div class="product-items">
-        {% for box in products %}
-        <div class="product-item">
-          <img src="{{ box.image_url }}" alt="{{ box.name }}" class="product-image">
-
-          <div class="product-info">
-            <h3>{{ box.name }}</h3>
-            <a href="/shop/{{ box.id }}" class="btn">View Details</a>
-          </div>
-        </div>
-        {% endfor %}
+      <div class="product-info">
+        <h3>{{ box.name }}</h3>
+        <a href="/shop/{{ box.id }}" class="btn">View Details</a>
       </div>
-
-      <a href="/shop" class="btn btn-primary">View All Products</a>
-    </section>
+    </div>
+    {% endfor %}
   </div>
 
-  {% include 'shared/footer.html' %}
-</body>
-
-</html>
+  <a href="/shop" class="btn btn-primary">View All Products</a>
+</section>
+{% endblock%}
