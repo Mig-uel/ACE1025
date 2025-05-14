@@ -1,7 +1,7 @@
 from datetime import datetime
 
 from constants import DB_URI, SECRET_KEY
-from flask import Flask, redirect, render_template, request, session
+from flask import Flask, abort, redirect, render_template, request, session
 from flask_bcrypt import Bcrypt
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
@@ -188,9 +188,19 @@ def shop():
     return "shop route"
 
 
-@app.route("/shop/<id>")
+@app.route("/shop/<int:id>")
 def single_product(id):
-    return f"single product route {id}"
+    try:
+        query = select(Product).where(Product.id == id)
+        product = db.session.scalar(query)
+
+        if not (product):
+            raise Exception("Product not found")
+
+        return render_template("single_product.html", product=product)
+    except Exception as e:
+        print(e)
+        return abort(404)
 
 
 @app.route("/orders")
@@ -212,7 +222,7 @@ def admin():
 
 @app.errorhandler(404)
 def not_found(e):
-    return "not found"
+    return render_template("not_found.html")
 
 
 if __name__ == "__main__":
