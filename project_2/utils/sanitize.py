@@ -1,12 +1,14 @@
 def check_registration(form):
     errors = []
 
+    first_name = form["first_name"].strip()
+    last_name = form["last_name"].strip()
     email = form["email"].strip()
     username = form["username"].strip()
     password = form["password"]
     confirm_password = form["confirm_password"]
 
-    if not (username) or not (email) or not (password) or not (confirm_password):
+    if not all([first_name, last_name, email, username, password, confirm_password]):
         errors.append("All fields must be filled out")
 
     if password != confirm_password:
@@ -20,3 +22,11 @@ def check_registration(form):
 
     if len(errors) > 0:
         raise Exception(errors)
+
+    return {
+        "email": email,
+        "username": username,
+        "password": password,
+        "first_name": first_name,
+        "last_name": last_name,
+    }
