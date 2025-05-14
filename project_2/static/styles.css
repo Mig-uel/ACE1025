@@ -49,6 +49,10 @@
   margin-bottom: -2px;
 }
 
+.text-gray {
+  color: #808080;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -160,6 +164,51 @@ footer {
   justify-content: center;
   align-items: center;
   gap: 10px;
+}
+
+.auth-body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+
+.auth-form-container {
+  background-color: #f7f7f7;
+  border-radius: 5px;
+  padding: 40px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.auth-form {
+  margin-top: 50px;
+  display: flex;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.form-group label {
+  font-weight: bold;
+}
+.form-group input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 @media (min-width: 768px) {
