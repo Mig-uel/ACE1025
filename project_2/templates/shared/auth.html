@@ -39,6 +39,12 @@
             {% endif %}
           </p>
         </div>
+
+        {% if error %}
+        <div class="error" role="alert">
+          {{ error }}
+        </div>
+        {% endif %}
       </form>
     </div>
   </main>
