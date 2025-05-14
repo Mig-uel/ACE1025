@@ -40,10 +40,12 @@
           </p>
         </div>
 
-        {% if error %}
-        <div class="error" role="alert">
-          {{ error }}
-        </div>
+        {% if errors %}
+        {% for e in errors %}
+        <p class="error" role="alert">
+          {{ e }}
+        </p>
+        {% endfor %}
         {% endif %}
       </form>
     </div>
