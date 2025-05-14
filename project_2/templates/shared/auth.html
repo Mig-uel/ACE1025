@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="/static/styles.css">
+  <title>{% block title %}{% endblock %}</title>
+</head>
+
+<body>
+  <main class="auth-body">
+    <div class="auth-form-container">
+      <div>
+        <a href="/" class="link"><i class="bi bi-arrow-left-circle-fill"></i> Home</a>
+      </div>
+      <div>
+        <h1>{% block heading %}{% endblock %}</h1>
+        <p class="text-gray">
+          {% block description %}{% endblock %}
+        </p>
+      </div>
+
+      <form action="{{ action_value }}" method="POST" class="auth-form">
+        {% block form_content %}
+        {% endblock %}
+
+        <button type="submit" class="btn btn-primary">
+          {% block button_text %}{% endblock %}
+        </button>
+
+        <div>
+          <p class="text-gray">
+            {% if action_value == '/login' %}
+            Don't have an account? <a class="link" href="/register">Register</a>
+            {% else %}
+            Already have an account? <a class="link" href="/login">Login</a>
+            {% endif %}
+          </p>
+        </div>
+      </form>
+    </div>
+  </main>
+</body>
+
+</html>
