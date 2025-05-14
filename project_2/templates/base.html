@@ -8,13 +8,14 @@
   <script src="https://unpkg.com/htmx.org@2.0.4"></script>
   <link rel="stylesheet" href="/static/styles.css">
   <title>{% block title %}Boxes4U{% endblock %}</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
 <body hx-boost="true">
   {% block header %}
   {% endblock %}
 
-  <div class="container">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     {% block content %}
     {% endblock %}
   </div>
