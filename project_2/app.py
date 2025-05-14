@@ -1,10 +1,11 @@
 from datetime import datetime
 
 from constants import DB_URI
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import select
+from utils.sanitize import check_registration
 
 # init Flask
 app = Flask(__name__)
@@ -60,16 +61,23 @@ class OrderItem(db.Model):
 
 
 @app.route("/")
-def hello():
+def home():
     query = select(Product).where()
     boxes = db.session.scalars(query)
 
     return render_template("index.html", products=boxes.all())
 
 
-@app.route("/register")
+@app.route("/register", methods=["GET", "POST"])
 def register():
-    return render_template("register.html")
+    errors = None
+    if request.method == "POST":
+        try:
+            check_registration(form=request.form)
+        except Exception as e:
+            errors = e.args[0]
+
+    return render_template("register.html", errors=errors)
 
 
 @app.route("/login")
