@@ -78,12 +78,12 @@ def cart():
     return "cart route"
 
 
-@app.route("/products")
-def products():
-    return "products route"
+@app.route("/shop")
+def shop():
+    return "shop route"
 
 
-@app.route("/products/<id>")
+@app.route("/shop/<id>")
 def single_product(id):
     return f"single product route {id}"
 
