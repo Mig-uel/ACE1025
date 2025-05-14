@@ -58,18 +58,9 @@
 }
 
 .hero {
-  height: 500px;
   background-image: url('/static/images/hero.jpg');
   background-size: cover;
   background-position: center;
-  text-align: center;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  gap: 20px;
 }
 
 footer {
