@@ -7,18 +7,19 @@
 {% endblock %}
 
 {% block content %}
-<section class="products">
+<section class="flex flex-col items-center justify-center p-10 gap-10">
   <h2 class="text-2xl font-bold">Products</h2>
 
-  <div class="product-items">
+  <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 cursor-pointer">
     {% for box in products %}
-    <div class="product-item">
-      <img src="{{ box.image_url }}" alt="{{ box.name }}" class="product-image">
+    <div class="outline">
+      <a href="/shop/{{ box.id }}" class="space-y-10 p-4">
+        <img src="{{ box.image_url }}" alt="{{ box.name }}">
 
-      <div class="product-info">
-        <h3>{{ box.name }}</h3>
-        <a href="/shop/{{ box.id }}" class="btn">View Details</a>
-      </div>
+        <div class="text-center space-y-4">
+          <h3 class="text-lg font-bold">{{ box.name }}</h3>
+        </div>
+      </a>
     </div>
     {% endfor %}
   </div>
