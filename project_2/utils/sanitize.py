@@ -9,7 +9,7 @@ def check_registration(form):
     confirm_password = form["confirm_password"]
 
     if not all([first_name, last_name, email, username, password, confirm_password]):
-        errors.append("All fields must be filled out")
+        errors.append("All fields are required")
 
     if password != confirm_password:
         errors.append("Passwords must match")
@@ -30,3 +30,18 @@ def check_registration(form):
         "first_name": first_name,
         "last_name": last_name,
     }
+
+
+def check_login(form):
+    errors = []
+
+    username = form["username"].strip()
+    password = form["password"]
+
+    if not all([username, password]):
+        errors.append("All fields are required")
+
+    if len(errors):
+        raise Exception(errors)
+
+    return {"username": username, "password": password}
