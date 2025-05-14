@@ -194,10 +194,15 @@ def single_product(id):
         query = select(Product).where(Product.id == id)
         product = db.session.scalar(query)
 
+        query = select(Category).where(Category.id == product.category_id)
+        category = db.session.scalar(query)
+
         if not (product):
             raise Exception("Product not found")
 
-        return render_template("single_product.html", product=product)
+        return render_template(
+            "single_product.html", product=product, category=category.name
+        )
     except Exception as e:
         print(e)
         return abort(404)
