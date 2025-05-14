@@ -63,19 +63,6 @@
   background-position: center;
 }
 
-footer {
-  background-color: #000;
-  color: white;
-  text-align: center;
-  bottom: 0;
-  height: 200px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 14px;
-  font-weight: 300;
-}
-
 .auth-body {
   height: 100vh;
   display: flex;
