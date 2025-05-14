@@ -10,14 +10,14 @@
   <title>{% block title %}Boxes4U{% endblock %}</title>
 </head>
 
-<body hx-boost="true">
+<body class="min-h-screen flex flex-col" hx-boost="true">
   {% block header %}
   {% endblock %}
 
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     {% block content %}
     {% endblock %}
-  </div>
+  </main>
 
   <footer class="bg-black text-white py-4 text-center h-40 flex flex-col justify-center">
     <p>&copy; {{ year }} Boxes4U. All rights reserved.</p>
