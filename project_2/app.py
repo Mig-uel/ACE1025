@@ -63,5 +63,30 @@ def hello():
     return render_template("index.html")
 
 
+@app.route("/register")
+def register():
+    return "register route"
+
+
+@app.route("/login")
+def login():
+    return "login route"
+
+
+@app.route("/cart")
+def cart():
+    return "cart route"
+
+
+@app.route("/products")
+def products():
+    return "products route"
+
+
+@app.route("/products/<id>")
+def single_product(id):
+    return f"single product route {id}"
+
+
 if __name__ == "__main__":
     app.run(debug=True)
