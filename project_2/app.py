@@ -2,6 +2,7 @@ from datetime import datetime
 
 from constants import DB_URI
 from flask import Flask, render_template, request
+from flask_bcrypt import Bcrypt
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from psycopg2 import errors
@@ -17,6 +18,7 @@ app.config["SQLALCHEMY_TACK_MODIFICATIONS"] = False
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
+bcrypt = Bcrypt(app)
 
 
 # ----- Models -----
@@ -79,10 +81,14 @@ def register():
         try:
             user_data = check_registration(form=request.form)
 
+            hashed_password = bcrypt.generate_password_hash(
+                user_data["password"]
+            ).decode("utf-8")
+
             user = User(
                 username=user_data["username"],
                 email=user_data["email"],
-                password=user_data["password"],
+                password=hashed_password,
                 first_name=user_data["first_name"],
                 last_name=user_data["last_name"],
             )
