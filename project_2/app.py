@@ -88,5 +88,10 @@ def single_product(id):
     return f"single product route {id}"
 
 
+@app.errorhandler(404)
+def not_found(e):
+    return "not found"
+
+
 if __name__ == "__main__":
     app.run(debug=True)
