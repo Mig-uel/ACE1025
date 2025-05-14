@@ -10,6 +10,9 @@
       <a href="/cart" class="link">Cart</a>
       {% if session.user_id %}
       <a href="/orders" class="link">Orders</a>
+      {% if session.is_admin %}
+      <a href="/admin" class="link">Admin</a>
+      {% endif %}
       <a href="/logout" class="link">Logout</a>
       {% else %}
       <a href="/login" class="link">Login</a>
