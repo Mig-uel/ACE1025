@@ -4,6 +4,7 @@ from constants import DB_URI
 from flask import Flask, render_template
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import select
 
 # init Flask
 app = Flask(__name__)
@@ -60,7 +61,10 @@ class OrderItem(db.Model):
 
 @app.route("/")
 def hello():
-    return render_template("index.html")
+    query = select(Product).where()
+    boxes = db.session.scalars(query)
+
+    return render_template("index.html", products=boxes.all())
 
 
 @app.route("/register")
