@@ -194,6 +194,15 @@ def orders():
     return "orders page"
 
 
+@app.route("/admin")
+def admin():
+    print(session)
+    if not session or not session["is_admin"]:
+        return redirect("/")
+
+    return "admin page"
+
+
 @app.errorhandler(404)
 def not_found(e):
     return "not found"
