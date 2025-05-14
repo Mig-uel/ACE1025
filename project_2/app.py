@@ -78,6 +78,9 @@ def home():
 def register():
     form_errors = []
 
+    if "user_id" in session:
+        return redirect("/")
+
     if request.method == "POST":
         try:
             user_data = check_registration(form=request.form)
@@ -96,6 +99,9 @@ def register():
 
             db.session.add(user)
             db.session.commit()
+
+            session["user_id"] = user.id
+            session["username"] = user.username
 
             return redirect("/")
         except IntegrityError as e:
@@ -128,6 +134,9 @@ def register():
 @app.route("/login", methods=["GET", "POST"])
 def login():
     form_errors = []
+
+    if "user_id" in session:
+        return redirect("/")
 
     if request.method == "POST":
         try:
