@@ -102,6 +102,7 @@ def register():
 
             session["user_id"] = user.id
             session["username"] = user.username
+            session["is_admin"] = user.isAdmin
 
             return redirect("/")
         except IntegrityError as e:
@@ -145,20 +146,16 @@ def login():
             query = select(User).where(User.username == user_data["username"])
             user = db.session.scalar(query)
 
-            if not user:
-                form_errors.append("Invalid username/password")
-                return render_template("login.html", errors=form_errors)
-
-            is_password_valid = bcrypt.check_password_hash(
-                user.password, user_data["password"]
-            )
-
-            if not is_password_valid:
+            if not user or (
+                user
+                and not bcrypt.check_password_hash(user.password, user_data["password"])
+            ):
                 form_errors.append("Invalid username/password")
                 return render_template("login.html", errors=form_errors)
 
             session["user_id"] = user.id
             session["username"] = user.username
+            session["is_admin"] = user.isAdmin
 
             return redirect("/")
         except Exception as e:
@@ -187,6 +184,14 @@ def shop():
 @app.route("/shop/<id>")
 def single_product(id):
     return f"single product route {id}"
+
+
+@app.route("/orders")
+def orders():
+    if not session:
+        return redirect("/login")
+
+    return "orders page"
 
 
 @app.errorhandler(404)
