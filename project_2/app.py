@@ -112,6 +112,7 @@ def register():
             session["user_id"] = user.id
             session["username"] = user.username
             session["is_admin"] = user.isAdmin
+            session.setdefault("cart", {})
 
             return redirect("/")
         except IntegrityError as e:
@@ -165,6 +166,7 @@ def login():
             session["user_id"] = user.id
             session["username"] = user.username
             session["is_admin"] = user.isAdmin
+            session.setdefault("cart", {})
 
             return redirect("/")
         except Exception as e:
