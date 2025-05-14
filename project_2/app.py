@@ -1,7 +1,7 @@
 from datetime import datetime
 
-from constants import DB_URI
-from flask import Flask, redirect, render_template, request
+from constants import DB_URI, SECRET_KEY
+from flask import Flask, redirect, render_template, request, session
 from flask_bcrypt import Bcrypt
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
@@ -12,6 +12,7 @@ from utils.sanitize import check_login, check_registration
 
 # init Flask
 app = Flask(__name__)
+app.secret_key = SECRET_KEY
 app.config["SQLALCHEMY_DATABASE_URI"] = DB_URI
 app.config["SQLALCHEMY_TACK_MODIFICATIONS"] = False
 
@@ -146,6 +147,9 @@ def login():
             if not is_password_valid:
                 form_errors.append("Invalid username/password")
                 return render_template("login.html", errors=form_errors)
+
+            session["user_id"] = user.id
+            session["username"] = user.username
 
             return redirect("/")
         except Exception as e:
