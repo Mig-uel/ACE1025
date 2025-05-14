@@ -159,6 +159,12 @@ def login():
     return render_template("login.html", errors=form_errors)
 
 
+@app.route("/logout")
+def logout():
+    session.clear()
+    return redirect("/login")
+
+
 @app.route("/cart")
 def cart():
     return "cart route"
