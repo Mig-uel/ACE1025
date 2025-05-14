@@ -53,6 +53,11 @@
   color: #808080;
 }
 
+.error {
+  color: red;
+  font-weight: bold;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
