@@ -75,7 +75,7 @@ class Category(db.Model):
 
 @app.route("/")
 def home():
-    query = select(Product)
+    query = select(Product).limit(limit=4)
     boxes = db.session.scalars(query).all()
 
     return render_template("index.html", products=boxes)
