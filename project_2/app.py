@@ -4,7 +4,9 @@ from constants import DB_URI
 from flask import Flask, render_template, request
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
+from psycopg2 import errors
 from sqlalchemy import select
+from sqlalchemy.exc import IntegrityError, SQLAlchemyError
 from utils.sanitize import check_registration
 
 # init Flask
@@ -71,14 +73,47 @@ def home():
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
-    errors = None
+    form_errors = []
+
     if request.method == "POST":
         try:
-            check_registration(form=request.form)
-        except Exception as e:
-            errors = e.args[0]
+            user_data = check_registration(form=request.form)
 
-    return render_template("register.html", errors=errors)
+            user = User(
+                username=user_data["username"],
+                email=user_data["email"],
+                password=user_data["password"],
+                first_name=user_data["first_name"],
+                last_name=user_data["last_name"],
+            )
+
+            db.session.add(user)
+            db.session.commit()
+        except IntegrityError as e:
+            db.session.rollback()
+            orig = e.orig
+
+            # Check if it's a UNIQUE violation
+            if isinstance(orig, errors.UniqueViolation):
+                msg = str(orig)
+                if "user_username_key" in msg:
+                    form_errors.append("That username is already taken")
+                elif "user_email_key" in msg:
+                    form_errors.append("That email is already registered")
+            else:
+                form_errors.append("Something went wrong, please try again")
+
+        except SQLAlchemyError as e:
+            db.session.rollback()
+            form_errors.append(e)
+        except Exception as e:
+            print(type(e))
+            print(e)
+
+            for i in e.args[0]:
+                form_errors.append(i)
+
+    return render_template("register.html", errors=form_errors)
 
 
 @app.route("/login")
