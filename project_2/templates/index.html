@@ -19,29 +19,19 @@
       <h2>Our Boxes</h2>
 
       <div class="product-items">
+        {% for box in products %}
         <div class="product-item">
-          <img src="/static/images/box1.jpg" alt="Box 1">
-          <h3>Box 1</h3>
-          <p>Details about Box 1.</p>
-          <a href="/products/box1" class="btn">View Details</a>
-        </div>
+          <img src="{{ box.image_url }}" alt="{{ box.name }}" class="product-image">
 
-        <div class="product-item">
-          <img src="/static/images/box2.jpg" alt="Box 2">
-          <h3>Box 2</h3>
-          <p>Details about Box 2.</p>
-          <a href="/products/box2" class="btn">View Details</a>
+          <div class="product-info">
+            <h3>{{ box.name }}</h3>
+            <a href="/products/{{ box.id }}" class="btn">View Details</a>
+          </div>
         </div>
-
-        <div class="product-item">
-          <img src="/static/images/box3.jpg" alt="Box 3">
-          <h3>Box 3</h3>
-          <p>Details about Box 3.</p>
-          <a href="/products/box3" class="btn">View Details</a>
-        </div>
+        {% endfor %}
       </div>
 
-      <a href="/products" class="btn btn-primary">View All Products</a>
+      <a href="/shop" class="btn btn-primary">View All Products</a>
     </section>
   </div>
 

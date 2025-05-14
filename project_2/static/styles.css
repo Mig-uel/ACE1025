@@ -62,8 +62,6 @@
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
-
-  outline: 3px solid blue; /* For debugging purposes */
 }
 
 header {
@@ -125,10 +123,8 @@ footer {
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: 20px;
+  gap: 50px;
   justify-content: center;
-
-  outline: 3px solid red; /* For debugging purposes */
 }
 
 .product-items {
@@ -138,15 +134,32 @@ footer {
   gap: 50px;
   justify-content: center;
   align-items: center;
-
-  outline: 3px solid yellow; /* For debugging purposes */
 }
 
 .product-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  max-width: 500px;
-  height: 400px;
-  outline: 3px solid green; /* For debugging purposes */
+  outline: 1px solid #000;
+  padding: 20px 0;
+  gap: 20px;
+  cursor: pointer;
+}
+
+.product-image {
+  width: 90%;
+  height: 90%;
+  object-fit: cover;
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 
 @media (min-width: 768px) {
@@ -163,5 +176,10 @@ footer {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 20px;
+  }
+
+  .product-item {
+    width: 300px;
+    max-width: 300px;
   }
 }
