@@ -1,0 +1,30 @@
+{% extends 'shared/auth.html' %}
+
+{% block title %}Register{% endblock %}
+
+{% block heading %}Register{% endblock %}
+
+{% block description %}Please enter your credentials to register.{% endblock %}
+
+{% set action_value = "/register" %}
+
+{% block form_content %}
+<div class="form-group">
+  <label for="email">Email</label>
+  <input type="email" id="email" name="email" required>
+</div>
+<div class="form-group">
+  <label for="username">Username</label>
+  <input type="text" id="username" name="username" required>
+</div>
+<div class="form-group">
+  <label for="password">Password</label>
+  <input type="password" id="password" name="password" required>
+</div>
+<div class="form-group">
+  <label for="confirm_password">Confirm Password</label>
+  <input type="password" id="confirm_password" name="confirm_password" required>
+</div>
+{% endblock %}
+
+{% block button_text %}Register{% endblock %}
