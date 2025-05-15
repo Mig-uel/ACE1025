@@ -7,11 +7,10 @@
 {% endblock %}
 
 {% block content %}
-<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 mt-16">
   <div>
     <img src="{{ product.image_url }}" alt="{{ product.name }}" class="w-full h-auto rounded-md shadow">
   </div>
-
   <div class="flex flex-col">
     <div class="mt-8 flex flex-col gap-4">
       <h2 class="text-lg font-bold">{{ product.category.name if product.category else "Uncategorized" }}</h2>
@@ -24,15 +23,23 @@
         <p class="text-gray-700">No description available for this product.</p>
         {% endif %}
       </div>
-      <p class="text-xl font-semibold text-green-600">${{ product.price }}</p>
+      <p class="text-xl font-semibold text-green-100 rounded-xl  bg-emerald-500 w-fit px-3 py-1 text-center">
+        ${{ product.price }}</p>
     </div>
 
-    {% if product.stock|int > 0 %}
-    <button class="bg-black text-white px-6 py-2 rounded-md hover:bg-gray-900 transition mt-12">
+    {% if product.stock|int > 0 and session.user_id %}
+    <button type="button" class="btn mt-12" hx-post="/cart/add" hx-vals='{"product_id": "{{ product.id }}"}'
+      hx-target="#cart-count" hx-swap="outerHTML">
       + Add to Cart
     </button>
+    {% elif  product.stock|int > 0 and not session.user_id%}
+    <a type="button" class="btn mt-12 text-center" href="/login">
+      <i class="bi bi-person-circle"></i>
+      <span class="ml-1">Login to Add to Cart</span>
+    </a>
     {% else %}
-    <button class="bg-gray-500 text-white px-6 py-2 rounded-md hover:bg-gray-600 transition mt-12" disabled>
+    <button type="button" class="bg-gray-500 text-white px-6 py-2 rounded-md hover:bg-gray-600 transition mt-12"
+      disabled>
       Out of Stock
     </button>
     {% endif %}

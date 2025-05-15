@@ -9,8 +9,10 @@
     <div class="hidden md:flex md:gap-4">
       <a href="/" class="link">Home</a>
       <a href="/shop" class="link">Shop</a>
-      <a href="/cart" class="link">Cart</a>
       {% if session.user_id %}
+      <a href="/cart" class="link">Cart
+        (<span id="cart-count">{{session["cart"]|length}}</span>)
+      </a>
       <a href="/orders" class="link">Orders</a>
       {% if session.is_admin %}
       <a href="/admin" class="link">Admin</a>
