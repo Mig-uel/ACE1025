@@ -10,39 +10,41 @@
 </head>
 
 <body>
-  <main class="auth-body">
-    <div class="auth-form-container">
-      <div>
-        <a href="/" class="link"><i class="bi bi-arrow-left-circle-fill"></i> Home</a>
-      </div>
-      <div>
-        <h1>{% block heading %}{% endblock %}</h1>
-        <p class="text-gray">
+  <main class="h-screen flex items-center justify-center">
+    <div class="bg-[#f7f7f7] shadow-md rounded p-8 mb-4 w-full max-w-lg">
+      <a href="/" class="font-medium text-gray-500 mb-6 hover:text-gray-700 w-fit">
+        <i class="bi bi-arrow-left"></i>
+        <span class="ml-1">Return Home</span>
+      </a>
+
+      <div class="mt-8">
+        <h1 class="text-2xl font-bold">{% block heading %}{% endblock %}</h1>
+        <p class="text-gray-500">
           {% block description %}{% endblock %}
         </p>
       </div>
 
-      <form action="{{ action_value }}" method="POST" class="auth-form">
+      <form action="{{ action_value }}" method="POST" class="flex flex-col mt-8 gap-4">
         {% block form_content %}
         {% endblock %}
 
-        <button type="submit" class="btn btn-primary">
+        <button type="submit" class="btn">
           {% block button_text %}{% endblock %}
         </button>
 
         <div>
-          <p class="text-gray">
+          <p class="text-gray-500">
             {% if action_value == '/login' %}
-            Don't have an account? <a class="link" href="/register">Register</a>
+            Don't have an account? <a class="hover:text-black font-bold" href="/register">Register</a>
             {% else %}
-            Already have an account? <a class="link" href="/login">Login</a>
+            Already have an account? <a class="hover:text-black font-bold" href="/login">Login</a>
             {% endif %}
           </p>
         </div>
 
         {% if errors %}
         {% for e in errors %}
-        <p class="error" role="alert">
+        <p class="text-red-500 font-bold" role="alert">
           {{ e }}
         </p>
         {% endfor %}
