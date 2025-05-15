@@ -9,13 +9,13 @@
 {% set action_value = "/login" %}
 
 {% block form_content %}
-<div class="form-group">
-  <label for="username">Username</label>
-  <input type="text" id="username" name="username" required>
+<div class="flex flex-col gap-4">
+  <label for="username" class="font-bold">Username</label>
+  <input type="text" id="username" name="username" required class="border border-gray-300 rounded-md p-2">
 </div>
-<div class="form-group">
-  <label for="password">Password</label>
-  <input type="password" id="password" name="password" required>
+<div class="flex flex-col gap-4">
+  <label for="password" class="font-bold">Password</label>
+  <input type="password" id="password" name="password" required class="border border-gray-300 rounded-md p-2">
 </div>
 {% endblock %}
 

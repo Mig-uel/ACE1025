@@ -31,14 +31,6 @@ body {
   background-position: center;
 }
 
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.form-group label {
-  font-weight: bold;
-}
 .form-group input {
   padding: 10px;
   border: 1px solid #ccc;
