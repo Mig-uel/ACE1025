@@ -1,7 +1,7 @@
 from datetime import datetime
 
 from constants import DB_URI, SECRET_KEY
-from flask import Flask, abort, redirect, render_template, request, session
+from flask import Flask, abort, redirect, render_template, request, session, url_for
 from flask_bcrypt import Bcrypt
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
@@ -88,7 +88,7 @@ def register():
     form_errors = []
 
     if "user_id" in session:
-        return redirect("/")
+        return redirect(url_for("home"))
 
     if request.method == "POST":
         try:
@@ -114,7 +114,7 @@ def register():
             session["is_admin"] = user.isAdmin
             session.setdefault("cart", {})
 
-            return redirect("/")
+            return redirect(url_for("home"))
         except IntegrityError as e:
             db.session.rollback()
             orig = e.orig
@@ -147,7 +147,7 @@ def login():
     form_errors = []
 
     if "user_id" in session:
-        return redirect("/")
+        return redirect(url_for("home"))
 
     if request.method == "POST":
         try:
@@ -168,7 +168,7 @@ def login():
             session["is_admin"] = user.isAdmin
             session.setdefault("cart", {})
 
-            return redirect("/")
+            return redirect(url_for("home"))
         except Exception as e:
             for i in e.args[0]:
                 form_errors.append(i)
@@ -179,11 +179,13 @@ def login():
 @app.route("/logout")
 def logout():
     session.clear()
-    return redirect("/login")
+    return redirect(url_for("login"))
 
 
 @app.route("/cart")
 def cart():
+    if not session:
+        return redirect(url_for("login"))
     return "cart route"
 
 
@@ -237,7 +239,7 @@ def single_product(id):
 @app.route("/orders")
 def orders():
     if not session:
-        return redirect("/login")
+        return redirect(url_for("login"))
 
     return "orders page"
 
@@ -246,7 +248,7 @@ def orders():
 def admin():
     print(session)
     if not session or not session["is_admin"]:
-        return redirect("/")
+        return redirect(url_for("home"))
 
     return "admin page"
 
