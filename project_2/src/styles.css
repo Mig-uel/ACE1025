@@ -30,9 +30,3 @@ body {
   background-size: cover;
   background-position: center;
 }
-
-.form-group input {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
