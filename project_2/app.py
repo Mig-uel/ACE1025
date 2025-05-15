@@ -213,7 +213,10 @@ def add_to_cart():
 
 @app.route("/shop")
 def shop():
-    return "shop route"
+    query = select(Product)
+    products = db.session.scalars(query).all()
+
+    return render_template("shop.html", products=products)
 
 
 @app.route("/shop/<int:id>")
