@@ -187,6 +187,30 @@ def cart():
     return "cart route"
 
 
+@app.post("/cart/add")
+def add_to_cart():
+    product_id = request.form.get("product_id")
+
+    if not product_id:
+        abort(400)
+
+    product = db.session.get(Product, product_id)
+
+    if not product:
+        abort(400)
+
+    cart = session.get("cart", {})
+    print(cart)
+    item = cart.get(
+        product_id, {"name": product.name, "qty": 0, "price": float(product.price)}
+    )
+    item["qty"] += 1
+    cart[product_id] = item
+    session["cart"] = cart
+
+    return str(len(cart))
+
+
 @app.route("/shop")
 def shop():
     return "shop route"
