@@ -1,3 +1,7 @@
+def init_cart():
+    return {"items": {}, "subtotal": 0, "total_items": 0}
+
+
 def get_cart(session):
     return session.get("cart")
 
