@@ -13,9 +13,7 @@
   <div class="grid md:grid-cols-3 gap-10 mt-12">
     {% for category in categories %}
     <!-- Category Card -->
-    <div class="btn text-center">
-      <h3 class="text-lg font-semibold">{{ category.name }}</h3>
-    </div>
+    {% include 'partials/category-card.html' %}
     {% endfor %}
 
     {% if categories|length == 0 %}
