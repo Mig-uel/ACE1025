@@ -259,7 +259,7 @@ def update_cart():
     session["cart"] = cart
 
     return render_template(
-        "partials/cart_table.html",
+        "partials/cart_update_response.html",
         cart_items=cart_items,
     )
 
