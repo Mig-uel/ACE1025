@@ -1,4 +1,5 @@
 from datetime import datetime
+from math import floor
 
 from constants import DB_URI, SECRET_KEY
 from flask import Flask, abort, redirect, render_template, request, session, url_for
@@ -221,23 +222,38 @@ def add_to_cart():
 @app.route("/shop")
 def shop():
     limit = 6
+    skip = None
     query = None
     isFiltered = False
-    category = request.args.get("category")
     total_count = None
+    total_pages = None
+
+    # search params
+    page = request.args.get("page", default=1, type=int)
+    category = request.args.get("category")
+
+    skip = (page - 1) * limit
 
     if category:
         isFiltered = True
-        query = select(Product).where(Product.category_id == category)
-        total_count = Product.query.filter_by(category_id=3).count()
+        total_count = Product.query.filter_by(category_id=category).count()
+        query = select(Product).where(Product.category_id == category).offset(skip)
     else:
-        query = select(Product).limit(limit)
         total_count = Product.query.count()
+        query = select(Product).limit(limit).offset(skip)
 
     products = db.session.scalars(query).all()
 
+    # calculate pages
+    total_pages = floor(total_count / limit) or 1
+
     return render_template(
-        "shop.html", products=products, isFiltered=isFiltered, total_count=total_count
+        "shop.html",
+        products=products,
+        isFiltered=isFiltered,
+        total_count=total_count,
+        total_pages=total_pages,
+        page=page,
     )
 
 
