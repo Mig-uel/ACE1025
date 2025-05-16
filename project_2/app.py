@@ -9,7 +9,7 @@ from flask_sqlalchemy import SQLAlchemy
 from psycopg2 import errors
 from sqlalchemy import select
 from sqlalchemy.exc import IntegrityError, SQLAlchemyError
-from utils.cart_utils import get_cart, get_cart_items
+from utils.cart_utils import get_cart, get_cart_items, init_cart
 from utils.sanitize import check_login, check_registration
 
 # init Flask
@@ -119,9 +119,7 @@ def register():
             session["user_id"] = user.id
             session["username"] = user.username
             session["is_admin"] = user.isAdmin
-
-            # init cart
-            session.setdefault("cart", {"items": {}, "total_items": 0, "subtotal": 0})
+            session.setdefault(init_cart())
 
             return redirect(url_for("home"))
         except IntegrityError as e:
@@ -175,9 +173,7 @@ def login():
             session["user_id"] = user.id
             session["username"] = user.username
             session["is_admin"] = user.isAdmin
-
-            # init cart
-            session.setdefault("cart", {"items": {}, "total_items": 0, "subtotal": 0})
+            session.setdefault("cart", init_cart())
 
             return redirect(url_for("home"))
         except Exception as e:
@@ -219,16 +215,19 @@ def cart():
     )
 
 
-# TODO: rework/redo session["cart"] logic:
-# store cart totals in session["cart"], therefore not having to pass
-# them down to the template every time
 @app.patch("/cart/update")
 def update_cart():
     action = request.form.get("action")
     product_id = request.form.get("product_id")
 
     cart = session.get("cart")
-    item = cart.get(product_id)
+    cart_items = get_cart_items(cart)
+
+    total_items = 0
+    subtotal = 0
+
+    # find item in cart_items
+    item = cart_items.get(product_id)
 
     if action == "increase":
         item["qty"] += 1
@@ -237,35 +236,31 @@ def update_cart():
             cart.pop(product_id, None)
         else:
             item["qty"] -= 1
+    else:
+        return
 
-    total_items_count = 0
-    subtotal = 0
-
-    cart_items = {}
-
-    for product_id, item in cart.items():
-        qty = item["qty"]
-        total_items_count += qty
+    for product_id, item in cart_items.items():
+        total_items += item["qty"]
 
         product = Product.query.where(Product.id == product_id).first()
 
-        subtotal += product.price * qty
+        subtotal += product.price * item["qty"]
 
         cart_items[product_id] = {
-            "qty": qty,
+            "qty": item["qty"],
             "name": product.name,
             "price": product.price,
-            "total_price": product.price * qty,
+            "total_price": product.price * item["qty"],
             "image_url": product.image_url,
         }
 
+    cart["total_items"] = total_items
+    cart["subtotal"] = subtotal
     session["cart"] = cart
 
     return render_template(
         "partials/cart_table.html",
         cart_items=cart_items,
-        subtotal=subtotal,
-        total_items_count=total_items_count,
     )
 
 
@@ -281,16 +276,18 @@ def add_to_cart():
     if not product:
         abort(400)
 
-    cart = session.get("cart", {})
+    cart = session.get("cart", init_cart())
+    cart_items = get_cart_items(cart)
 
-    item = cart.get(
+    # TODO: add extra metadata (image_url)
+    item = cart_items.get(
         product_id, {"name": product.name, "qty": 0, "price": float(product.price)}
     )
     item["qty"] += 1
-    cart[product_id] = item
+    cart_items[product_id] = item
     session["cart"] = cart
 
-    return str(len(cart))
+    return str(0)
 
 
 @app.route("/shop")
