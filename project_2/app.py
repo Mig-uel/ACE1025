@@ -192,7 +192,35 @@ def logout():
 def cart():
     if not session:
         return redirect(url_for("login"))
-    return render_template("cart.html")
+
+    cart = session.get("cart")
+    total_items_count = 0
+    subtotal = 0
+
+    cart_items = {}
+
+    for product_id, item in cart.items():
+        qty = item["qty"]
+        total_items_count += qty
+
+        product = Product.query.where(Product.id == product_id).first()
+
+        subtotal += product.price * qty
+
+        cart_items[product_id] = {
+            "qty": qty,
+            "name": product.name,
+            "price": product.price,
+            "total_price": product.price * qty,
+            "image_url": product.image_url,
+        }
+
+    return render_template(
+        "cart.html",
+        total_items_count=total_items_count,
+        cart_items=cart_items,
+        subtotal=subtotal,
+    )
 
 
 @app.post("/cart/add")
