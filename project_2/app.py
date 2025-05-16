@@ -278,13 +278,19 @@ def add_to_cart():
 
     cart = session.get("cart", init_cart())
     cart_items = get_cart_items(cart)
+    cart_total_items = cart["total_items"]
+    cart_subtotal = cart["subtotal"]
 
     # TODO: add extra metadata (image_url)
     item = cart_items.get(
         product_id, {"name": product.name, "qty": 0, "price": float(product.price)}
     )
+    cart_total_items += 1
     item["qty"] += 1
+    cart_subtotal += item["price"]
     cart_items[product_id] = item
+    cart["total_items"] = cart_total_items
+    cart["subtotal"] = cart_subtotal
     session["cart"] = cart
 
     return str(0)
