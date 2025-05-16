@@ -192,7 +192,7 @@ def logout():
 def cart():
     if not session:
         return redirect(url_for("login"))
-    return "cart route"
+    return render_template("cart.html")
 
 
 @app.post("/cart/add")
