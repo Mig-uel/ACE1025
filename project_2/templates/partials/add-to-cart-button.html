@@ -1,6 +1,6 @@
 {% if product.stock|int > 0 and session.user_id %}
 <button type="button" class="btn mt-4 w-full" hx-post="/cart/add" hx-vals='{"product_id": "{{ product.id }}"}'
-  hx-target="#cart-count" hx-swap="innerHTML">
+  hx-target="#cart-count" hx-swap="outerHTML">
   <i class="bi bi-plus-lg"></i>
   <span class="ml-0.5">Add to Cart</span>
 </button>
