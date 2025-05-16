@@ -281,12 +281,20 @@ def add_to_cart():
     cart_total_items = cart["total_items"]
     cart_subtotal = cart["subtotal"]
 
-    # TODO: add extra metadata (image_url)
     item = cart_items.get(
-        product_id, {"name": product.name, "qty": 0, "price": float(product.price)}
+        product_id,
+        {
+            "name": product.name,
+            "qty": 0,
+            "price": product.price,
+            "total_price": 0,
+            "image_url": product.image_url,
+        },
     )
+
     cart_total_items += 1
     item["qty"] += 1
+    item["total_price"] = item["qty"] * product.price
     cart_subtotal += item["price"]
     cart_items[product_id] = item
     cart["total_items"] = cart_total_items
