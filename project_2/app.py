@@ -293,7 +293,7 @@ def add_to_cart():
     cart["subtotal"] = cart_subtotal
     session["cart"] = cart
 
-    return str(0)
+    return render_template("partials/cart_count.html")
 
 
 @app.route("/shop")
