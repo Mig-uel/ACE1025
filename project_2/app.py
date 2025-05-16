@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timezone
 from math import floor
 
 from constants import DB_URI, SECRET_KEY
@@ -33,6 +33,7 @@ class User(db.Model):
     email = db.Column(db.String(50), nullable=False, unique=True)
     password = db.Column(db.String(128), nullable=False)
     isAdmin = db.Column(db.Boolean, default=False)
+    orders = db.relationship("Order", backref="user", lazy=True)
 
 
 # Product
@@ -51,7 +52,7 @@ class Product(db.Model):
 class Order(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
-    created_at = db.Column(db.DateTime, default=datetime.now())
+    created_at = db.Column(db.DateTime, default=lambda: datetime.now(timezone.utc))
     status = db.Column(db.String(20), default="pending")
     total_price = db.Column(db.Numeric(10, 2), nullable=False)
     user = db.relationship("User", backref=db.backref("orders", lazy=True))
