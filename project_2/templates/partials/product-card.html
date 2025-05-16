@@ -1,21 +1,15 @@
-<a href="/shop/{{ product.id }}">
-  <div class=" bg-white shadow-md rounded-lg overflow-hidden">
-    <img src="{{ product.image_url }}" alt="{{ product.name }}" class="w-full h-48 object-cover">
-    <div class="p-4">
+<div class=" bg-white shadow-md rounded-lg overflow-hidden">
+  <a href="/shop/{{ product.id }}">
+    <img src="{{ product.image_url }}" alt="{{ product.name }}" class="w-full h-48 object-contain">
+
+    <div class="p-4 mt-8">
       <h2 class="text-sm font-bold">{{ product.category.name if product.category else "Uncategorized" }}</h2>
       <h1 class="text-xl font-semibold">{{ product.name }}</h1>
+
       <p class="text-gray-700">${{ product.price }}</p>
-      {% if product.stock|int > 0 %}
-      <button type="button" class="btn mt-4" hx-post="/cart/add" hx-vals='{"product_id": "{{ product.id }}"}'
-        hx-target="#cart-count" hx-swap="outerHTML">
-        + Add to Cart
-      </button>
-      {% else %}
-      <button type="button" class="bg-gray-500 text-white px-6 py-2 rounded-md hover:bg-gray-600 transition mt-4"
-        disabled>
-        Out of Stock
-      </button>
-      {% endif %}
     </div>
-  </div>
-</a>
+  </a>
+
+  <!-- Add to Cart Button -->
+  {% include 'partials/add-to-cart-button.html' %}
+</div>

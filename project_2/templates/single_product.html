@@ -28,22 +28,8 @@
 
     </div>
 
-    {% if product.stock|int > 0 and session.user_id %}
-    <button type="button" class="btn mt-12" hx-post="/cart/add" hx-vals='{"product_id": "{{ product.id }}"}'
-      hx-target="#cart-count" hx-swap="outerHTML">
-      + Add to Cart
-    </button>
-    {% elif  product.stock|int > 0 and not session.user_id%}
-    <a type="button" class="btn mt-12 text-center" href="/login">
-      <i class="bi bi-person-circle"></i>
-      <span class="ml-1">Login to Add to Cart</span>
-    </a>
-    {% else %}
-    <button type="button" class="bg-gray-500 text-white px-6 py-2 rounded-md hover:bg-gray-600 transition mt-12"
-      disabled>
-      Out of Stock
-    </button>
-    {% endif %}
+    <!-- Add to Cart Button -->
+    {% include 'partials/add-to-cart-button.html' %}
   </div>
 
 </div>
