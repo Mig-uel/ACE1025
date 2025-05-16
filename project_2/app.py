@@ -80,7 +80,12 @@ def home():
     query = select(Product).limit(limit=4)
     products = db.session.scalars(query).all()
 
-    return render_template("index.html", products=products, year=year)
+    query = select(Category)
+    categories = db.session.scalars(query).all()
+
+    return render_template(
+        "index.html", products=products, year=year, categories=categories
+    )
 
 
 @app.route("/register", methods=["GET", "POST"])
