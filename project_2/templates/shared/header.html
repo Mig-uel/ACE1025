@@ -7,7 +7,7 @@
     <!-- Desktop Menu -->
     <div class="hidden md:flex gap-2">
       <a href="{{url_for("home")}}" class="{% if request.path == url_for('home') %}active{% endif %}">Home</a>
-      <a href="{{url_for("shop")}}" class="{% if request.path == url_for('shop') %}active{% endif %}">Shop</a>
+      <a href="{{url_for("shop")}}" class="{% if request.path.startswith(url_for('shop')) %}active{% endif %}">Shop</a>
       {% if session.user_id %}
       <a href="{{url_for("cart")}}" class="{% if request.path == url_for('cart') %}active{% endif %}">Cart
         (<span id="cart-count">{{session["cart"]|length}}</span>)
@@ -32,7 +32,7 @@
       class="hidden md:hidden fixed h-screen w-screen bg-black text-white text-xl top-0 left-0 flex-col justify-center items-center gap-4"
       id="mobile-menu">
       <a href="{{url_for("home")}}" class="{% if request.path == url_for('home') %}active{% endif %}">Home</a>
-      <a href="{{url_for("shop")}}" class="{% if request.path == url_for('shop') %}active{% endif %}">Shop</a>
+      <a href="{{url_for("shop")}}" class="{% if request.path.startswith(url_for('shop')) %}active{% endif %}">Shop</a>
       {% if session.user_id %}
       <a href="{{url_for("cart")}}" class="{% if request.path == url_for('cart') %}active{% endif %}">Cart
         (<span id="cart-count">{{session["cart"]|length}}</span>)
