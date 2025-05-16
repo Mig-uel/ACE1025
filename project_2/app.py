@@ -194,22 +194,6 @@ def cart():
     if not session:
         return redirect(url_for("login"))
 
-    cart = get_cart(session)
-    cart_items = get_cart_items(cart)
-
-    for product_id, item in cart_items.items():
-        qty = item["qty"]
-
-        product = Product.query.where(Product.id == product_id).first()
-
-        cart_items[product_id] = {
-            "qty": qty,
-            "name": product.name,
-            "price": product.price,
-            "total_price": product.price * qty,
-            "image_url": product.image_url,
-        }
-
     return render_template(
         "cart.html",
     )
