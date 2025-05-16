@@ -7,23 +7,48 @@
 {% endblock %}
 
 {% block content %}
-<section class="flex flex-col items-center justify-center p-10 gap-10">
-  <h2 class="text-2xl font-bold">Products</h2>
+<section class="grid grid-cols-1 gap-10">
+  <!-- Categories Section -->
 
-  <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-    {% set plain_card = True %}
-    {% for product in products %}
-    <!-- Product Card -->
-    {% include 'partials/product-card.html' %}
+  <div class="grid md:grid-cols-3 gap-10 mt-12">
+    {% for category in categories %}
+    <!-- Category Card -->
+    <div class="btn text-center">
+      <h3 class="text-lg font-semibold">{{ category.name }}</h3>
+    </div>
     {% endfor %}
 
-    {% if products|length == 0 %}
+    {% if categories|length == 0 %}
     <div class="text-center col-span-4">
-      <h1 class="text-2xl font-bold">No products available</h1>
+      <h1 class="text-2xl font-bold">No categories available</h1>
       <p class="text-gray-700">Please check back later.</p>
     </div>
     {% endif %}
   </div>
-  <a href="/shop" class="btn ">View All Products</a>
+
+  <!-- Products Section -->
+  <div class="my-12">
+    <h2 class="text-2xl font-bold text-center">Products</h2>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mt-12">
+      {% set plain_card = True %}
+      {% for product in products %}
+      <!-- Product Card -->
+      {% include 'partials/product-card.html' %}
+      {% endfor %}
+
+      {% if products|length == 0 %}
+      <div class="text-center col-span-4">
+        <h1 class="text-2xl font-bold">No products available</h1>
+        <p class="text-gray-700">Please check back later.</p>
+      </div>
+      {% endif %}
+    </div>
+
+    <div class="text-center mt-12">
+      <a href="/shop" class="btn">View All Products</a>
+    </div>
+  </div>
+
 </section>
 {% endblock %}
