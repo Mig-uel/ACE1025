@@ -239,7 +239,6 @@ def shop():
         isFiltered = True
         total_count = Product.query.filter_by(category_id=category).count()
         query = select(Product).where(Product.category_id == category).offset(skip)
-
     else:
         total_count = Product.query.count()
         query = select(Product).limit(limit).offset(skip)
