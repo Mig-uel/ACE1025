@@ -1,5 +1,5 @@
 {% if session.cart %}
-<div class="mt-4" hx-target="this">
+<div class="mt-4" id="cart-screen">
   <h2 class="text-lg font-semibold">Your Cart ({{ total_items_count }})</h2>
 
   <div class="mt-4">
@@ -16,12 +16,14 @@
       <div class="flex items-center justify-between w-1/4">
         <div class="flex items-center gap-4">
           <button type="button" class="cursor-pointer bg-gray-200 rounded p-2" hx-patch="/cart/update"
-            hx-vals='{"action": "decrease", "product_id": "{{ product_id }}"}' hx-swap="outerHTML">
+            hx-vals='{"action": "decrease", "product_id": "{{ product_id }}"}' hx-swap="outerHTML"
+            hx-target="#cart-screen">
             <i class="bi bi-dash"></i>
           </button>
           <span class="text-gray-600">{{ item.qty }}</span>
           <button type="button" class="cursor-pointer bg-gray-200 rounded p-2" hx-patch="/cart/update"
-            hx-vals='{"action": "increase", "product_id": "{{ product_id }}"}' hx-swap="outerHTML">
+            hx-vals='{"action": "increase", "product_id": "{{ product_id }}"}' hx-swap="outerHTML"
+            hx-target="#cart-screen">
             <i class="bi bi-plus"></i>
           </button>
         </div>
@@ -44,7 +46,8 @@
     <a href="/shop" class="btn bg-gray-300 text-black">Continue Shopping</a>
     <a href="/checkout" class="btn">Proceed to Checkout</a>
   </div>
-</div> {% else %}
+</div>
+{% else %}
 <div class="text-center mt-16 space-y-4">
   <div><i class="bi bi-cart-x-fill text-6xl"></i></div>
 
