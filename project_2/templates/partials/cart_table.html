@@ -1,6 +1,6 @@
 {% if session.cart["items"] %}
 <div class="mt-4" id="cart-screen">
-  <h2 class="text-lg font-semibold">Your Cart ({{ total_items_count }})</h2>
+  <h2 class="text-lg font-semibold">Your Cart ({{ session.cart.total_items }})</h2>
 
   <div class="mt-4">
     {% for product_id, item in session.cart["items"].items() %}
@@ -38,7 +38,7 @@
     {% endfor %}
     <div class="mt-4 flex justify-between">
       <h2 class="text-lg font-semibold">Subtotal</h2>
-      <p class="text-gray-600">${{ subtotal }}</p>
+      <p class="text-gray-600">${{ session.cart.subtotal }}</p>
     </div>
   </div>
 
