@@ -220,10 +220,23 @@ def add_to_cart():
 
 @app.route("/shop")
 def shop():
-    query = select(Product)
+    query = None
+    isFiltered = False
+    category = request.args.get("category")
+
+    if category:
+        isFiltered = True
+        query = select(Product).where(Product.category_id == category)
+    else:
+        query = select(Product)
+
     products = db.session.scalars(query).all()
 
-    return render_template("shop.html", products=products)
+    return render_template(
+        "shop.html",
+        products=products,
+        isFiltered=isFiltered,
+    )
 
 
 @app.route("/shop/<int:id>")

@@ -11,25 +11,32 @@
   <h1 class="text-2xl font-bold mt-8">Shop</h1>
   <p class="text-gray-700">Explore our range of products.</p>
 
-
-  {% if products|length == 0 %}
-  <div class="text-center mt-12">
-    <h1 class="text-2xl font-bold">No products available</h1>
-    <p class="text-gray-700">Please check back later.</p>
+  <div class="flex justify-between items-center mt-4">
+    {% if isFiltered %}
+    <h2 class="text-lg font-semibold">Filtered Products ({{ products|length }})</h2>
+    <a href="/shop" class="text-blue-500 hover:underline">Clear Filters</a>
   </div>
+  {% else %}
+  <h2 class="text-lg font-semibold">All Products ({{ products|length }})</h2>
   {% endif %}
+</div>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mt-16 mb-16">
-    <!-- Category Filter -->
-    {% if categories %}
-    {% include 'partials/category-filter.html' %}
-    {% endif %}
 
-    {% for product in products %}
-    <!-- Product Card -->
-    {% include 'partials/product-card.html' %}
-    {% endfor %}
-  </div>
+
+{% if products|length == 0 %}
+<div class="text-center mt-12">
+  <h1 class="text-2xl font-bold">No products available</h1>
+  <p class="text-gray-700">Please check back later.</p>
+</div>
+{% endif %}
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mt-16 mb-16">
+  {% for product in products %}
+  <!-- Product Card -->
+  {% include 'partials/product-card.html' %}
+  {% endfor %}
+</div>
+
 </div>
 
 {% endblock %}
