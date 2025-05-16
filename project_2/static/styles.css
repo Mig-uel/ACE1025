@@ -227,6 +227,9 @@
   .mx-auto {
     margin-inline: auto;
   }
+  .my-16 {
+    margin-block: calc(var(--spacing) * 16);
+  }
   .mt-4 {
     margin-top: calc(var(--spacing) * 4);
   }
