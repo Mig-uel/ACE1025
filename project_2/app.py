@@ -231,7 +231,7 @@ def shop():
 
     # search params
     page = request.args.get("page", default=1, type=int)
-    category = request.args.get("category")
+    category = request.args.get("category", type=int)
 
     skip = (page - 1) * limit
 
