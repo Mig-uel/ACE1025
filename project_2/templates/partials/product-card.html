@@ -10,6 +10,8 @@
     </div>
   </a>
 
+  {% if not plain_card %}
   <!-- Add to Cart Button -->
   {% include 'partials/add-to-cart-button.html' %}
+  {% endif %}
 </div>
