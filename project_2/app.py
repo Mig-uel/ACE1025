@@ -55,7 +55,6 @@ class Order(db.Model):
     created_at = db.Column(db.DateTime, default=lambda: datetime.now(timezone.utc))
     status = db.Column(db.String(20), default="pending")
     total_price = db.Column(db.Numeric(10, 2), nullable=False)
-    user = db.relationship("User", backref=db.backref("orders", lazy=True))
     items = db.relationship(
         "OrderItem", backref="order", lazy=True, cascade="all, delete-orphan"
     )
