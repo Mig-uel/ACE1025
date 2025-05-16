@@ -26,8 +26,20 @@
           </div>
         </div>
 
-        <div>
-          <p class="text-gray-600">${{ item.price }} x {{ item.qty }} = ${{ item.price * item.qty }}</p>
+        <div class="flex items-center justify-between w-1/4">
+          <div class="flex items-center gap-4">
+            <button type="button" class="cursor-pointer bg-gray-200 rounded p-2">
+              <i class="bi bi-dash"></i>
+            </button>
+            <span class="text-gray-600">{{ item.qty }}</span>
+            <button type="button" class="cursor-pointer bg-gray-200 rounded p-2">
+              <i class="bi bi-plus"></i>
+            </button>
+          </div>
+
+          <div>
+            <p class="text-gray-600">${{ item.price }} x {{ item.qty }} = ${{ item.price * item.qty }}</p>
+          </div>
         </div>
       </div>
       {% endfor %}
