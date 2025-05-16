@@ -233,7 +233,7 @@ def update_cart():
         item["qty"] += 1
     elif action == "decrease":
         if item["qty"] == 1:
-            cart.pop(product_id, None)
+            cart_items.pop(product_id, None)
         else:
             item["qty"] -= 1
     else:
