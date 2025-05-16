@@ -9,6 +9,7 @@ from flask_sqlalchemy import SQLAlchemy
 from psycopg2 import errors
 from sqlalchemy import select
 from sqlalchemy.exc import IntegrityError, SQLAlchemyError
+from utils.cart_utils import get_cart, get_cart_items
 from utils.sanitize import check_login, check_registration
 
 # init Flask
@@ -118,7 +119,9 @@ def register():
             session["user_id"] = user.id
             session["username"] = user.username
             session["is_admin"] = user.isAdmin
-            session.setdefault("cart", {})
+
+            # init cart
+            session.setdefault("cart", {"items": {}, "total_items": 0, "subtotal": 0})
 
             return redirect(url_for("home"))
         except IntegrityError as e:
@@ -172,7 +175,9 @@ def login():
             session["user_id"] = user.id
             session["username"] = user.username
             session["is_admin"] = user.isAdmin
-            session.setdefault("cart", {})
+
+            # init cart
+            session.setdefault("cart", {"items": {}, "total_items": 0, "subtotal": 0})
 
             return redirect(url_for("home"))
         except Exception as e:
@@ -193,19 +198,13 @@ def cart():
     if not session:
         return redirect(url_for("login"))
 
-    cart = session.get("cart")
-    total_items_count = 0
-    subtotal = 0
+    cart = get_cart(session)
+    cart_items = get_cart_items(cart)
 
-    cart_items = {}
-
-    for product_id, item in cart.items():
+    for product_id, item in cart_items.items():
         qty = item["qty"]
-        total_items_count += qty
 
         product = Product.query.where(Product.id == product_id).first()
-
-        subtotal += product.price * qty
 
         cart_items[product_id] = {
             "qty": qty,
@@ -217,9 +216,6 @@ def cart():
 
     return render_template(
         "cart.html",
-        total_items_count=total_items_count,
-        cart_items=cart_items,
-        subtotal=subtotal,
     )
 
 

@@ -1,9 +1,9 @@
-{% if session.cart %}
+{% if session.cart["items"] %}
 <div class="mt-4" id="cart-screen">
   <h2 class="text-lg font-semibold">Your Cart ({{ total_items_count }})</h2>
 
   <div class="mt-4">
-    {% for product_id, item in cart_items.items() %}
+    {% for product_id, item in session.cart["items"].items() %}
     <div class="flex items-center justify-between border-b py-4">
       <div class="flex items-center">
         <img src="{{ item.image_url }}" alt="{{ item.name }}" class="w-16 h-16 mr-4">
