@@ -13,11 +13,11 @@
 
   <div class="flex justify-between items-center mt-4">
     {% if isFiltered %}
-    <h2 class="text-lg font-semibold">Filtered Products ({{ products|length }})</h2>
+    <h2 class="text-lg font-semibold">Filtered Products ({{ total_count }})</h2>
     <a href="/shop" class="text-blue-500 hover:underline">Clear Filters</a>
   </div>
   {% else %}
-  <h2 class="text-lg font-semibold">All Products ({{ products|length }})</h2>
+  <h2 class="text-lg font-semibold">All Products ({{ total_count }})</h2>
   {% endif %}
 </div>
 

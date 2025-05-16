@@ -220,22 +220,24 @@ def add_to_cart():
 
 @app.route("/shop")
 def shop():
+    limit = 6
     query = None
     isFiltered = False
     category = request.args.get("category")
+    total_count = None
 
     if category:
         isFiltered = True
         query = select(Product).where(Product.category_id == category)
+        total_count = Product.query.filter_by(category_id=3).count()
     else:
-        query = select(Product)
+        query = select(Product).limit(limit)
+        total_count = Product.query.count()
 
     products = db.session.scalars(query).all()
 
     return render_template(
-        "shop.html",
-        products=products,
-        isFiltered=isFiltered,
+        "shop.html", products=products, isFiltered=isFiltered, total_count=total_count
     )
 
 
