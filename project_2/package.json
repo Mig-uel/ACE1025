@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "tailwindcss -i ./src/styles.css -o ./static/styles.css --watch --content './templates/**/*.html'",
+    "build": "tailwindcss -i ./app/styles.css -o ./static/styles.css --watch --content './templates/**/*.html'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
