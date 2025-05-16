@@ -7,32 +7,28 @@
 {% endblock %}
 
 {% block content %}
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mt-16 mb-16">
-  <h1 class="text-2xl font-bold text-center col-span-1 md:col-span-2 lg:col-span-3 place-self-start">Shop</h1>
-  <!-- {% if products|length == 0 %}
-  <div class="col-span-1 md:col-span-2 lg:col-span-3">
-    <h1 class="text-2xl font-bold text-center">No products available</h1>
-    <p class="text-center text-gray-700">Please check back later.</p>
+<div class="flex flex-col justify-center">
+  <h1 class="text-2xl font-bold mt-8">Shop</h1>
+
+
+  {% if products|length == 0 %}
+  <div class="text-center mt-12">
+    <h1 class="text-2xl font-bold">No products available</h1>
+    <p class="text-gray-700">Please check back later.</p>
   </div>
   {% endif %}
 
-  {% if categories %}
-  <div class="col-span-1 md:col-span-2 lg:col-span-3">
-    <h1 class="text-2xl font-bold text-center">Categories</h1>
-    <div class="flex justify-center space-x-4 mt-4">
-      {% for category in categories %}
-      <a href="/shop?category={{ category.id }}"
-        class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded-lg">
-        {{ category.name }}
-      </a>
-      {% endfor %}
-    </div>
-  </div>
-  {% endif %} -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mt-16 mb-16">
+    <!-- Category Filter -->
+    {% if categories %}
+    {% include 'partials/category-filter.html' %}
+    {% endif %}
 
-  {% for product in products %}
-  <!-- Product Card -->
-  {% include 'partials/product-card.html' %}
-  {% endfor %}
+    {% for product in products %}
+    <!-- Product Card -->
+    {% include 'partials/product-card.html' %}
+    {% endfor %}
+  </div>
 </div>
+
 {% endblock %}
