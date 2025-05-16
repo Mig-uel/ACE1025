@@ -227,6 +227,7 @@ def shop():
     isFiltered = False
     total_count = None
     total_pages = None
+    categories = Category.query
 
     # search params
     page = request.args.get("page", default=1, type=int)
@@ -238,6 +239,7 @@ def shop():
         isFiltered = True
         total_count = Product.query.filter_by(category_id=category).count()
         query = select(Product).where(Product.category_id == category).offset(skip)
+
     else:
         total_count = Product.query.count()
         query = select(Product).limit(limit).offset(skip)
@@ -254,6 +256,7 @@ def shop():
         total_count=total_count,
         total_pages=total_pages,
         page=page,
+        categories=categories,
     )
 
 
