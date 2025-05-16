@@ -360,6 +360,11 @@ def orders():
     return "orders page"
 
 
+@app.route("/checkout")
+def checkout():
+    return render_template("checkout.html")
+
+
 @app.route("/admin")
 def admin():
     print(session)
