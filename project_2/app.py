@@ -90,6 +90,11 @@ def inject_year():
     return {"year": datetime.now().year}
 
 
+@app.template_filter("datetime")
+def format_datetime(value, format="%B %d, %Y"):
+    return value.strftime(format)
+
+
 @app.route("/")
 def home():
     query = select(Product).limit(limit=4)
