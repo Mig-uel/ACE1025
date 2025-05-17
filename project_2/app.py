@@ -1,4 +1,5 @@
 from datetime import datetime, timezone
+from decimal import Decimal
 from math import floor
 
 from constants import DB_URI, SECRET_KEY
@@ -9,7 +10,7 @@ from flask_sqlalchemy import SQLAlchemy
 from psycopg2 import errors
 from sqlalchemy import select
 from sqlalchemy.exc import IntegrityError, SQLAlchemyError
-from utils.cart_utils import get_cart, get_cart_items, init_cart
+from utils.cart_utils import get_cart_items, init_cart
 from utils.sanitize import check_login, check_registration
 
 # init Flask
@@ -206,37 +207,30 @@ def update_cart():
 
     cart = session.get("cart")
     cart_items = get_cart_items(cart)
-
-    total_items = 0
-    subtotal = 0
+    total_items = cart["total_items"]
+    subtotal = Decimal(cart["subtotal"])
 
     # find item in cart_items
     item = cart_items.get(product_id)
 
     if action == "increase":
+        total_items += 1
         item["qty"] += 1
+        item["total_price"] = item["qty"] * item["price"]
+        subtotal += Decimal(item["price"])
+        cart_items[product_id] = item
     elif action == "decrease":
+        total_items -= 1
+        subtotal -= Decimal(item["price"])
+
         if item["qty"] == 1:
             cart_items.pop(product_id, None)
         else:
             item["qty"] -= 1
+            item["total_price"] = item["qty"] * item["price"]
+            cart_items[product_id] = item
     else:
         return
-
-    for product_id, item in cart_items.items():
-        total_items += item["qty"]
-
-        product = Product.query.where(Product.id == product_id).first()
-
-        subtotal += product.price * item["qty"]
-
-        cart_items[product_id] = {
-            "qty": item["qty"],
-            "name": product.name,
-            "price": product.price,
-            "total_price": product.price * item["qty"],
-            "image_url": product.image_url,
-        }
 
     cart["total_items"] = total_items
     cart["subtotal"] = subtotal
@@ -244,7 +238,6 @@ def update_cart():
 
     return render_template(
         "partials/cart_update_response.html",
-        cart_items=cart_items,
     )
 
 
