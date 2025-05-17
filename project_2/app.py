@@ -12,7 +12,7 @@ from sqlalchemy import select
 from sqlalchemy.dialects.postgresql import JSON
 from sqlalchemy.exc import IntegrityError, SQLAlchemyError
 from utils.cart_utils import get_cart_items, init_cart
-from utils.sanitize import check_login, check_registration
+from utils.sanitize import check_checkout_info, check_login, check_registration
 
 # init Flask
 app = Flask(__name__)
@@ -38,13 +38,6 @@ class User(db.Model):
     isAdmin = db.Column(db.Boolean, default=False)
     orders = db.relationship("Order", backref="user", lazy=True)
     address = db.Column(JSON, nullable=True)
-    # {
-    #   "street": "123 Food Truck Ln",
-    #   "city": "Sunny",
-    #   "state": "CA",
-    #   "postal_code": "90210",
-    #   "country": "USA"
-    # }
 
 
 # Product
@@ -355,12 +348,35 @@ def orders():
     return "orders page"
 
 
-@app.route("/checkout")
+@app.route("/checkout", methods=["GET", "POST"])
 def checkout():
     if not session or not session.get("cart")["total_items"]:
         return redirect(url_for("login"))
 
-    return render_template("checkout.html")
+    user_id = session.get("user_id")
+    user = db.session.get(User, user_id) or abort(404)
+
+    form_errors = []
+    if request.method == "POST":
+        try:
+            cart = session.get("cart")
+            user_info = check_checkout_info(request.form)
+
+            if not user.address:
+                user.address = {
+                    "street": user_info["street"],
+                    "city": user_info["city"],
+                    "postal_code": user_info["postal_code"],
+                    "country": user_info["country"],
+                }
+                db.session.commit()
+
+            return redirect(url_for("orders"))
+        except Exception as e:
+            for error in e.args[0]:
+                form_errors.append(error)
+
+    return render_template("checkout.html", user=user, errors=form_errors)
 
 
 @app.route("/admin")
