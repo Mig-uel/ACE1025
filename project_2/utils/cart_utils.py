@@ -2,7 +2,7 @@ from decimal import Decimal
 
 
 def init_cart():
-    return {"items": {}, "subtotal": Decimal(0), "total_items": 0}
+    return {"items": {}, "subtotal": Decimal(0.00), "total_items": 0}
 
 
 def get_cart(session):
