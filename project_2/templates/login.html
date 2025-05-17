@@ -6,7 +6,7 @@
 
 {% block description %}Please enter your credentials to login.{% endblock %}
 
-{% set action_value = "/login" %}
+{% set action_value = "/login?callback=" ~ request.args.get('callback', '') %}
 
 {% block form_content %}
 <div class="flex flex-col gap-2">

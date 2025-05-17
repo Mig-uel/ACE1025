@@ -163,6 +163,7 @@ def login():
 
     if request.method == "POST":
         try:
+            callback = request.args.get("callback")
             user_data = check_login(request.form)
 
             query = select(User).where(User.username == user_data["username"])
@@ -179,6 +180,10 @@ def login():
             session["username"] = user.username
             session["is_admin"] = user.isAdmin
             session.setdefault("cart", init_cart())
+
+            if callback:
+                print(callback)
+                return redirect(callback)
 
             return redirect(url_for("home"))
         except Exception as e:
