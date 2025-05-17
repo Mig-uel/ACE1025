@@ -45,3 +45,29 @@ def check_login(form):
         raise Exception(errors)
 
     return {"username": username, "password": password}
+
+
+def check_checkout_info(form):
+    errors = []
+
+    first_name = form.get("first_name")
+    last_name = form.get("last_name")
+    street = form.get("street")
+    postal_code = form.get("postal_code")
+    city = form.get("city")
+    country = form.get("country")
+
+    if not all([first_name, last_name, street, postal_code, city, country]):
+        errors.append("All fields are required")
+
+    if len(errors):
+        raise Exception(errors)
+
+    return {
+        "first_name": first_name,
+        "last_name": last_name,
+        "street": street,
+        "postal_code": postal_code,
+        "city": city,
+        "country": country,
+    }
