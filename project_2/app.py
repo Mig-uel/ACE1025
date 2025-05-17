@@ -1,3 +1,4 @@
+import uuid
 from datetime import datetime, timezone
 from decimal import Decimal
 from math import floor
@@ -9,7 +10,7 @@ from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from psycopg2 import errors
 from sqlalchemy import select
-from sqlalchemy.dialects.postgresql import JSON
+from sqlalchemy.dialects.postgresql import JSON, UUID
 from sqlalchemy.exc import IntegrityError, SQLAlchemyError
 from utils.cart_utils import get_cart_items, init_cart
 from utils.sanitize import check_checkout_info, check_login, check_registration
@@ -38,6 +39,7 @@ class User(db.Model):
     isAdmin = db.Column(db.Boolean, default=False)
     orders = db.relationship("Order", backref="user", lazy=True)
     address = db.Column(JSON, nullable=True)
+    uuid = db.Column(UUID(as_uuid=True), unique=True, default=uuid.uuid4)
 
 
 # Product
@@ -50,6 +52,7 @@ class Product(db.Model):
     image_url = db.Column(db.String(255))
     category_id = db.Column(db.Integer, db.ForeignKey("category.id"), nullable=False)
     category = db.relationship("Category")
+    uuid = db.Column(UUID(as_uuid=True), unique=True, default=uuid.uuid4)
 
 
 # Order
@@ -62,6 +65,7 @@ class Order(db.Model):
     items = db.relationship(
         "OrderItem", backref="order", lazy=True, cascade="all, delete-orphan"
     )
+    uuid = db.Column(UUID(as_uuid=True), unique=True, default=uuid.uuid4)
 
 
 # OrderItem
@@ -71,12 +75,14 @@ class OrderItem(db.Model):
     product_id = db.Column(db.Integer, db.ForeignKey("product.id"), nullable=False)
     qty = db.Column(db.Integer, nullable=False, default=1)
     price = db.Column(db.Numeric(10, 2), nullable=False)
+    uuid = db.Column(UUID(as_uuid=True), unique=True, default=uuid.uuid4)
 
 
 # Category
 class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.Text, unique=True, nullable=False)
+    uuid = db.Column(UUID(as_uuid=True), unique=True, default=uuid.uuid4)
 
 
 @app.context_processor
