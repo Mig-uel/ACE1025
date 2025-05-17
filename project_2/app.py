@@ -9,6 +9,7 @@ from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from psycopg2 import errors
 from sqlalchemy import select
+from sqlalchemy.dialects.postgresql import JSON
 from sqlalchemy.exc import IntegrityError, SQLAlchemyError
 from utils.cart_utils import get_cart_items, init_cart
 from utils.sanitize import check_login, check_registration
@@ -36,6 +37,14 @@ class User(db.Model):
     password = db.Column(db.String(128), nullable=False)
     isAdmin = db.Column(db.Boolean, default=False)
     orders = db.relationship("Order", backref="user", lazy=True)
+    address = db.Column(JSON, nullable=True)
+    # {
+    #   "street": "123 Food Truck Ln",
+    #   "city": "Sunny",
+    #   "state": "CA",
+    #   "postal_code": "90210",
+    #   "country": "USA"
+    # }
 
 
 # Product
