@@ -97,4 +97,9 @@ By completing this project, I now have a strong foundation for building and depl
 
 _(Screenshots of catalog page, cart page, registration form, and order confirmation coming soon!)_
 
+---
 
+## 🌐 Live Demo
+
+You can check out the live version of the app here:  
+👉 [https://boxes4u.onrender.com](https://boxes4u.onrender.com)
