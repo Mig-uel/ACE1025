@@ -182,7 +182,6 @@ def login():
             session.setdefault("cart", init_cart())
 
             if callback:
-                print(callback)
                 return redirect(callback)
 
             return redirect(url_for("home"))
