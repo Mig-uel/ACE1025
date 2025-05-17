@@ -5,7 +5,7 @@
   <span class="ml-0.5">Add to Cart</span>
 </button>
 {% elif product.stock|int > 0 and not session.user_id %}
-<a class="btn mt-4 text-center block w-full" href="/login">
+<a class="btn mt-4 text-center block w-full" href="/login?callback={{ request.path }}">
   <i class="bi bi-person-circle"></i>
   <span class="ml-0.5">Login to Add to Cart</span>
 </a>
