@@ -77,18 +77,20 @@ class Category(db.Model):
     name = db.Column(db.Text, unique=True, nullable=False)
 
 
+@app.context_processor
+def inject_year():
+    return {"year": datetime.now().year}
+
+
 @app.route("/")
 def home():
-    year = datetime.now().year
     query = select(Product).limit(limit=4)
     products = db.session.scalars(query).all()
 
     query = select(Category)
     categories = db.session.scalars(query).all()
 
-    return render_template(
-        "index.html", products=products, year=year, categories=categories
-    )
+    return render_template("index.html", products=products, categories=categories)
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -348,7 +350,7 @@ def orders():
 def checkout():
     if not session or not session.get("cart")["total_items"]:
         return redirect(url_for("login"))
-    
+
     return render_template("checkout.html")
 
 
