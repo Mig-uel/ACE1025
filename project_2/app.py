@@ -124,7 +124,7 @@ def register():
             session["user_id"] = user.id
             session["username"] = user.username
             session["is_admin"] = user.isAdmin
-            session.setdefault(init_cart())
+            session.setdefault("cart", init_cart())
 
             return redirect(url_for("home"))
         except IntegrityError as e:
