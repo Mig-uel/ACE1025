@@ -353,9 +353,17 @@ def single_product(id):
 @app.route("/orders")
 def orders():
     if not session:
-        return redirect(url_for("login"))
+        return redirect(url_for("login", callback=request.path))
 
-    return "orders page"
+    user_id = session.get("user_id")
+    user = db.session.get(User, user_id) or abort(404)
+
+    return render_template("orders.html", orders=user.orders)
+
+
+@app.route("/orders/<uuid:order_id>")
+def single_order(order_id):
+    return f"{order_id}"
 
 
 @app.route("/checkout", methods=["GET", "POST"])
