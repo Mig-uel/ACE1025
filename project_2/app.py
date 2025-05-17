@@ -346,6 +346,9 @@ def orders():
 
 @app.route("/checkout")
 def checkout():
+    if not session or not session.get("cart")["total_items"]:
+        return redirect(url_for("login"))
+    
     return render_template("checkout.html")
 
 
