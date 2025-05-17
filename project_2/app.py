@@ -371,6 +371,29 @@ def checkout():
                 }
                 db.session.commit()
 
+            # order logic
+            order = Order(
+                user_id=user_id,
+                created_at=datetime.now(timezone.utc),
+                total_price=Decimal(cart.get("subtotal")),
+            )
+
+            cart_items = get_cart_items(cart)
+
+            for product_id, item in cart_items.items():
+                order_item = OrderItem(
+                    product_id=int(product_id),
+                    price=Decimal(str(item["price"])),
+                    qty=item["qty"],
+                )
+
+                order.items.append(order_item)
+
+            db.session.add(order)
+            db.session.commit()
+
+            session["cart"] = init_cart()
+
             return redirect(url_for("orders"))
         except Exception as e:
             for error in e.args[0]:
