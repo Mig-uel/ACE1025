@@ -78,6 +78,7 @@ class OrderItem(db.Model):
     qty = db.Column(db.Integer, nullable=False, default=1)
     price = db.Column(db.Numeric(10, 2), nullable=False)
     uuid = db.Column(UUID(as_uuid=True), unique=True, default=uuid.uuid4)
+    product = db.relationship("Product", backref="order_item", lazy=True)
 
 
 # Category
