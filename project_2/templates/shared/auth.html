@@ -34,7 +34,7 @@
 
         <div>
           <p class="text-gray-500">
-            {% if action_value == '/login' %}
+            {% if action_value.startswith('/login') %}
             Don't have an account? <a class="hover:text-black font-bold" href="/register">Register</a>
             {% else %}
             Already have an account? <a class="hover:text-black font-bold" href="/login">Login</a>
