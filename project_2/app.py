@@ -371,7 +371,8 @@ def orders():
 
 @app.route("/orders/<uuid:order_id>")
 def single_order(order_id):
-    return f"{order_id}"
+    order = Order.query.where(Order.uuid == order_id).first_or_404()
+    return render_template("single_order.html", order=order)
 
 
 @app.route("/checkout", methods=["GET", "POST"])
