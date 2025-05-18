@@ -4,7 +4,7 @@
 
   <div class="mt-4">
     {% for product_id, item in session.cart["items"].items() %}
-    <div class="flex items-center justify-between border-b py-4">
+    <div class="sm:flex items-center justify-between border-b py-4">
       <div class="flex items-center">
         <a href="/shop/{{ product_id }}">
           <img src=" {{ item.image_url }}" alt="{{ item.name }}" class="w-16 h-16 mr-4"> </a>
@@ -15,7 +15,7 @@
         </div>
       </div>
 
-      <div class="flex items-center justify-between w-1/4">
+      <div class="flex items-center justify-between sm:w-1/4">
         <div class="flex items-center gap-4">
           <button type="button" class="cursor-pointer bg-gray-200 rounded p-2" hx-patch="/cart/update"
             hx-vals='{"action": "decrease", "product_id": "{{ product_id }}"}' hx-swap="outerHTML"
